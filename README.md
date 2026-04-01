@@ -13,7 +13,7 @@
 [![LatestRelease](https://img.shields.io/github/v/release/mIwr/SwByeDPI)](https://github.com/mIwr/SwByeDPI/releases/latest)
 
 [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg?style=flat&colorA=28a745&&colorB=4E4E4E)](https://github.com/apple/swift-package-manager)
-[![SPMPlatform](https://img.shields.io/badge/Platforms-iOS%20%7CmacOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20visionOS%20%7C%20Linux%20%7C%20Android-4E4E4E.svg?colorA=28a745)](#установка-и-настройка)
+[![SPMPlatform](https://img.shields.io/badge/Platforms-iOS%20%7CmacOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20visionOS%20%7C%20Linux-4E4E4E.svg?colorA=28a745)](#установка-и-настройка)
 [![SPMLicense](https://img.shields.io/github/license/mIwr/SwByeDPI)](./LICENSE)
 
 [![PodVersion](https://img.shields.io/cocoapods/v/SwByeDPI.svg?style=flat)](https://cocoapods.org/pods/SwByeDPI)
@@ -63,9 +63,9 @@ There are 3 modules-libraries:
 //Target dependencies parameter (SwByeDPI)
 .product(name: "SwByeDPI", package: "SwByeDPI")
 //Target dependencies parameter (ByeDPIKit)
-.product(name: "SwByeDPI", package: "ByeDPIKit")
+.product(name: "ByeDPIKit", package: "SwByeDPI")
 //Target dependencies parameter (ByeDPIC)
-.product(name: "SwByeDPI", package: "ByeDPIC")
+.product(name: "ByeDPIC", package: "SwByeDPI")
 ```
 
 ### CocoaPods
@@ -91,16 +91,16 @@ import ByeDPIKit
 
 var args: [String] = []
 //...Define the command-line arguments
-ByeDPI.startDPI(args: args) { BDError in
+ByeDPI.start(args: args) { BDError in
     //byedpi launch error processing
 }
 ```
 3) After some time, ByeDPI stop
 ```swift
 // General stop procedure
-_ = ByeDPI.stopDPI()
+_ = ByeDPI.stop()
 // If, upon restarting, the error bind error: Address already in use occurs, it is better to stop using via force stop
-_ = ByeDPI.forceStopDPI()
+_ = ByeDPI.forceStop()
 ```
 
 ## Additional
