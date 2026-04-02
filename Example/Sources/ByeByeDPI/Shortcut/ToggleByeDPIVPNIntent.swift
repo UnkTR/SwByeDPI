@@ -15,10 +15,9 @@ struct ToggleByeDPIVPNIntent: SetValueIntent {
             // Start VPN
             let res = try await StartByeDPIVPNIntent().perform()
             return .result(value: res.value ?? false)
-        } else {
-            // Stop VPN
-            _ = try await StopByeDPIVPNIntent().perform()
         }
+        // Stop VPN
+        _ = try await StopByeDPIVPNIntent().perform()
         return .result(value: true)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ByeDPIKit
 import SwByeDPI
 
 struct HomeScreen: View {
@@ -14,8 +15,9 @@ struct HomeScreen: View {
     @EnvironmentObject fileprivate var lnwPermissionManager: LNWPermissionManager
     @EnvironmentObject fileprivate var neManager: NEObservableManager
     
-    @State var vpnEnabled = false
+    @State var vpnStartFailErrorText = ""
     @State var showVpnEnabledHintAlert = false
+    @State var showVpnStartErrorAlert = false
     
     fileprivate var byeDPIProxyAddr: String {
         get {
@@ -35,11 +37,11 @@ struct HomeScreen: View {
                     .foregroundColor(.white)
             }
             .frame(width: 120, height: 120, alignment: .center)
-            .background(Color(vpnEnabled
+            .background(Color(neManager.vpnRunning
                               ? R.color.grPositive
                               : R.color.grAccent))
             .cornerRadius(120)
-            Text(vpnEnabled ? R.string.localizable.homeVpnStateOn : R.string.localizable.homeVpnStateOff)
+            Text(neManager.vpnRunning ? R.string.localizable.homeVpnStateOn : R.string.localizable.homeVpnStateOff)
                 .foregroundColor(Color(R.color.grSecondary))
                 .font(.caption)
                 .fontWeight(.semibold)
@@ -48,7 +50,7 @@ struct HomeScreen: View {
                 .font(.headline)
                 .fontWeight(.semibold)
             Spacer(minLength: 16)
-            if (vpnEnabled) {
+            if (neManager.vpnRunning) {
                 Button {
                     if (showVpnEnabledHintAlert) {
                         return
@@ -76,19 +78,30 @@ struct HomeScreen: View {
         .alert(isPresented: $showVpnEnabledHintAlert, content: {
             Alert(title: Text(R.string.localizable.homeSettingsAccessHint))
         })
+        .alert(isPresented: $showVpnStartErrorAlert) {
+            Alert(title: Text(R.string.localizable.homeStartByeDPIErrTitle), message: Text(vpnStartFailErrorText))
+        }
     }
     
     fileprivate func toggleVpn() {
 #if DEBUG
         if (ProcessInfo.processInfo.previewMode) {
-            //Disable real VPN connection
-            vpnEnabled = !vpnEnabled
+            if (neManager.vpnRunning) {
+                vpnStartFailErrorText = "Preview text error"
+                showVpnStartErrorAlert = true
+                neManager.stopConnection()
+                return
+            }
+            vpnStartFailErrorText = ""
+            neManager.startConnection { success, error in
+                
+            }
             return
         }
 #endif
-        if (vpnEnabled) {
+        vpnStartFailErrorText = ""
+        if (neManager.vpnRunning) {
             neManager.stopConnection()
-            vpnEnabled = false
             return
         }
         if (properties.byeDPILaunchConfig.listenIP == "0.0.0.0") {
@@ -97,10 +110,20 @@ struct HomeScreen: View {
             }
         }
         neManager.startConnection { success, error in
-            if (!success || error != nil) {
+            if let safeErr = error {
+                if let byedpiErr = safeErr as? BDError {
+                    self.vpnStartFailErrorText = byedpiErr.errorDescription
+                } else {
+                    self.vpnStartFailErrorText = safeErr.localizedDescription + " (" + String(describing: safeErr)
+                }
+                self.showVpnStartErrorAlert = true
                 return
             }
-            vpnEnabled = true
+            if (!success) {
+                self.vpnStartFailErrorText = R.string.localizable.homeStartByeDPIErrUnknownMsg()
+                self.showVpnStartErrorAlert = true
+                return
+            }
         }
     }
 }

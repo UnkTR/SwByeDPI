@@ -38,13 +38,17 @@ let package = Package(
             .product(name: "RswiftLibrary", package: "R.swift"),
             .product(name: "ByeDPIKit", package: "SwByeDPI"),
             .product(name: "SwByeDPI", package: "SwByeDPI")
-        ], exclude: BBDExcludeIOS, resources: [.copy("PrivacyInfo.xcprivacy")], plugins: [
+        ], exclude: BBDExcludeIOS, resources: [.copy("PrivacyInfo.xcprivacy")], linkerSettings: [
+            .linkedFramework("CoreFoundation"),
+            .linkedFramework("NetworkExtension")
+        ], plugins: [
             .plugin(name: "RswiftGenerateInternalResources", package: "R.swift")
         ]),
         .target(name: "ByeByeDPITun", dependencies: [
             .product(name: "ByeDPIKit", package: "SwByeDPI"),
             .product(name: "Tun2SocksKit", package: "Tun2SocksKit"),
         ], linkerSettings: [
+            .linkedFramework("CoreFoundation"),
             .linkedFramework("NetworkExtension")
         ]),
     ],

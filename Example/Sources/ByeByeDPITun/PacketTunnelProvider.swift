@@ -5,6 +5,7 @@
 //  Created by developer on 25.03.2026.
 //
 
+import CoreFoundation
 import OSLog
 import NetworkExtension
 import Tun2SocksKit
@@ -184,6 +185,9 @@ misc:
                 let hevSocksStartOpCode = await Socks5Tunnel.run(with: tun2SocksConfig)
                 if (hevSocksStartOpCode == 0) {
                     UserDefaultsAppProperties.byeDPIVPNRunning = true
+                    if let safeCenter = CFNotificationCenterGetDarwinNotifyCenter() {
+                        CFNotificationCenterPostNotification(safeCenter, .byeDPIVpnStarted, nil, nil, true)
+                    }
                     completionHandler(nil)
                     return
                 }
@@ -198,6 +202,9 @@ misc:
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         UserDefaultsAppProperties.byeDPIVPNRunning = false
+        if let safeCenter = CFNotificationCenterGetDarwinNotifyCenter() {
+            CFNotificationCenterPostNotification(safeCenter, .byeDPIVpnStopped, nil, nil, true)
+        }
         Socks5Tunnel.stop()
         if (ByeDPI.proxyStarted) {
             _ = ByeDPI.forceStop()
@@ -213,11 +220,17 @@ misc:
     
     override func sleep(completionHandler: @escaping () -> Void) {
         UserDefaultsAppProperties.byeDPIVPNRunning = false
+        if let safeCenter = CFNotificationCenterGetDarwinNotifyCenter() {
+            CFNotificationCenterPostNotification(safeCenter, .byeDPIVpnStopped, nil, nil, true)
+        }
         completionHandler()
     }
     
     override func wake() {
         UserDefaultsAppProperties.byeDPIVPNRunning = true
+        if let safeCenter = CFNotificationCenterGetDarwinNotifyCenter() {
+            CFNotificationCenterPostNotification(safeCenter, .byeDPIVpnStarted, nil, nil, true)
+        }
     }
     
 #if DEBUG

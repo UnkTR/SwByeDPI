@@ -1,6 +1,8 @@
 "homeVpnStateOff" = "ByeDPI - Off";
 "homeVpnStateOn" = "ByeDPI - On";
 "homeSettingsAccessHint" = "Disable ByeDPI before go to settings";
+"homeStartByeDPIErrTitle" = "ByeDPI fail start";
+"homeStartByeDPIErrUnknownMsg" = "Unknown error";
 
 "settingsGeneralSection" = "General";
 "settingsGeneralLanguageOption" = "Language";

@@ -1,6 +1,8 @@
 "homeVpnStateOff" = "ByeDPI - Выключено";
 "homeVpnStateOn" = "ByeDPI - Включено";
 "homeSettingsAccessHint" = "Отключите ByeDPI для перехода в настройки";
+"homeStartByeDPIErrTitle" = "Ошибка запуска ByeDPI";
+"homeStartByeDPIErrUnknownMsg" = "Неизвестная ошибка";
 
 "settingsGeneralSection" = "Общее";
 "settingsGeneralLanguageOption" = "Язык";

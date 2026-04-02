@@ -254,6 +254,8 @@
 				Sources/ByeByeDPI/Controller/NEObservablleManager.swift,
 				Sources/ByeByeDPI/Controller/StrategiesManager.swift,
 				Sources/ByeByeDPI/Controller/TestManager.swift,
+				"Sources/ByeByeDPI/Extension/CFNotificationName+VPN.swift",
+				"Sources/ByeByeDPI/Extension/NotificationName+VPN.swift",
 				"Sources/ByeByeDPI/Extension/NSObject+ClassName.swift",
 				"Sources/ByeByeDPI/Extension/ProcessInfo+PreviewMode.swift",
 				Sources/ByeByeDPI/Extension/Published.swift,
@@ -327,6 +329,8 @@
 				Sources/ByeByeDPI/Controller/LNWPermissionManager.swift,
 				Sources/ByeByeDPI/Controller/StrategiesManager.swift,
 				Sources/ByeByeDPI/Controller/TestManager.swift,
+				"Sources/ByeByeDPI/Extension/CFNotificationName+VPN.swift",
+				"Sources/ByeByeDPI/Extension/NotificationName+VPN.swift",
 				"Sources/ByeByeDPI/Extension/NSObject+ClassName.swift",
 				"Sources/ByeByeDPI/Extension/ProcessInfo+PreviewMode.swift",
 				Sources/ByeByeDPI/Extension/Published.swift,
@@ -427,6 +431,8 @@
 				Sources/ByeByeDPI/Controller/LNWPermissionManager.swift,
 				Sources/ByeByeDPI/Controller/StrategiesManager.swift,
 				Sources/ByeByeDPI/Controller/TestManager.swift,
+				"Sources/ByeByeDPI/Extension/CFNotificationName+VPN.swift",
+				"Sources/ByeByeDPI/Extension/NotificationName+VPN.swift",
 				"Sources/ByeByeDPI/Extension/NSObject+ClassName.swift",
 				"Sources/ByeByeDPI/Extension/ProcessInfo+PreviewMode.swift",
 				Sources/ByeByeDPI/Extension/Published.swift,
@@ -487,6 +493,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Sources/ByeByeDPITun/Constants.swift,
+				"Sources/ByeByeDPITun/Extension/CFNotificationName+VPN.swift",
 				"Sources/ByeByeDPITun/Extension/NETunnelProviderProtocol+CustomProps.swift",
 				"Sources/ByeByeDPITun/Extension/Socks5Tunnel+Async.swift",
 				Sources/ByeByeDPITun/PacketTunnelProvider.swift,
@@ -537,6 +544,7 @@
 				ByeDPIC/byedpi/win_service.h,
 				ByeDPIC/ciadpi_bridge.c,
 				ByeDPIC/ciadpi_bridge.h,
+				"ByeDPIC/commit-id",
 				ByeDPIC/include/ByeDPIC.h,
 				ByeDPIC/PrivacyInfo.xcprivacy,
 				ByeDPIKit/ByeDPI.swift,
@@ -1213,7 +1221,7 @@
 				CODE_SIGN_ENTITLEMENTS = Example/Sources/ByeByeDPI/ByeByeDPIDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = Example/Sources/ByeByeDPI/PreviewContent/PreviewAssets.xcassets;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 84LBSSY4T8;
@@ -1238,7 +1246,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.9.2;
 				PRODUCT_BUNDLE_IDENTIFIER = org.github.byedpi.app;
 				PRODUCT_MODULE_NAME = ByeByeDPI;
 				PRODUCT_NAME = ByeByeDPI;
@@ -1264,7 +1272,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Example/Sources/ByeByeDPI/ByeByeDPI.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = Example/Sources/ByeByeDPI/PreviewContent/PreviewAssets.xcassets;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
@@ -1288,7 +1296,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.9.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.byedpi.app;
 				PRODUCT_MODULE_NAME = ByeByeDPI;
 				PRODUCT_NAME = ByeByeDPI;

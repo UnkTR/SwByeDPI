@@ -12,6 +12,7 @@ var cSettings: [CSetting] = [
 ]
 
 var cExclude: [String] = [
+    "commit-id",
     "byedpi/.gitignore",
     "byedpi/win_service.c",
     "byedpi/win_service.h"
@@ -19,6 +20,7 @@ var cExclude: [String] = [
 
 #if os(Windows)
 cExclude = [
+    "commit-id",
     "byedpi/.gitignore"
 ]
 #endif

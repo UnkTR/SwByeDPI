@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target    = "9.0"
   spec.watchos.deployment_target = "2.0"
   spec.source                    = { :git => "https://github.com/mIwr/SwByeDPI.git", :tag => "#{spec.version}" }
-  spec.exclude_files             = "Sources/ByeDPIC/byedpi/win_service.c", "Sources/ByeDPIC/byedpi/win_service.h", "Sources/ByeDPIC/byedpi/.gitignore"
+  spec.exclude_files             = "Sources/ByeDPIC/byedpi/win_service.c", "Sources/ByeDPIC/byedpi/win_service.h", "Sources/ByeDPIC/byedpi/.gitignore", "Sources/ByeDPIC/commit-id"
   spec.source_files              = "Sources/ByeDPIC/*.{c,h}", "Sources/ByeDPIC/byedpi/*.{c,h}", "Sources/ByeDPIC/include/*.h"
   spec.public_header_files       = "Sources/ByeDPIC/include/*.h"
   spec.private_header_files      = "Sources/ByeDPIC/byedpi/*.h", "Sources/ByeDPIC/ciadpi_bridge.h"

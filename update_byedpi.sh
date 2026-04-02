@@ -1,10 +1,31 @@
 #!/bin/bash
 
-SUBMODULE_PATH="Sources/ByeDPIC/byedpi"
+REPO="https://github.com/hufrea/byedpi"
+MODULE_PATH="Sources/ByeDPIC"
+DOWNLOADED_COMMIT_ID_PATH="$MODULE_PATH/commit-id"
+SUBMODULE_PATH="$MODULE_PATH/byedpi"
+
+LAST_COMMIT_ID=$(git ls-remote "$REPO" HEAD | cut -f 1)
+echo "Remote repo last commit - $LAST_COMMIT_ID"
+DOWNLOADED_COMMIT_ID=""
+if [[ -f "$DOWNLOADED_COMMIT_ID_PATH" ]]; then
+    read -r DOWNLOADED_COMMIT_ID < "$DOWNLOADED_COMMIT_ID_PATH"
+fi
+echo "Cloned repo last commit - $DOWNLOADED_COMMIT_ID"
+
+if [[ "$LAST_COMMIT_ID" == "$DOWNLOADED_COMMIT_ID" ]]; then
+    echo "Commit ID from remote repo is equal to downloaded"
+    echo "No need to update byedpi module"
+    exit 0
+fi
 
 # Re-clone byedpi with the latest commit
+echo "Remove old byedpi sources at $SUBMODULE_PATH"
 rm -rf "$SUBMODULE_PATH"
-git clone --depth 1 https://github.com/hufrea/byedpi "$SUBMODULE_PATH"
+git clone --depth 1 "$REPO" "$SUBMODULE_PATH"
+if [[ -d "$SUBMODULE_PATH" ]]; then
+  echo "$LAST_COMMIT_ID" > "$DOWNLOADED_COMMIT_ID_PATH"
+fi
 
 # Prepare cloned directory
 rm -rf "$SUBMODULE_PATH/.git"

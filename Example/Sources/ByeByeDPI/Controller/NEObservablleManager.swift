@@ -6,19 +6,66 @@
 //
 
 import SwiftUI
+import CoreFoundation
 import NetworkExtension
+
+fileprivate func handleByeDPIVpnStart(notificationCenter: CFNotificationCenter?, observer: UnsafeMutableRawPointer?, notificationName: CFNotificationName?, object: UnsafeRawPointer?, info: CFDictionary?) {
+    //UserDefaultsAppProperties.appGroupUserDefaults.set(true, forKey: UserDefaultsAppKeys.byeDPIVPNRunning.rawValue)
+    DispatchQueue.main.async {
+        NotificationCenter.default.post(name: .BBDVpnStarted, object: nil)
+    }
+}
+
+fileprivate func handleByeDPIVpnStop(notificationCenter: CFNotificationCenter?, observer: UnsafeMutableRawPointer?, notificationName: CFNotificationName?, object: UnsafeRawPointer?, info: CFDictionary?) {
+    //UserDefaultsAppProperties.appGroupUserDefaults.set(false, forKey: UserDefaultsAppKeys.byeDPIVPNRunning.rawValue)
+    DispatchQueue.main.async {
+        NotificationCenter.default.post(name: .BBDVpnStopped, object: nil)
+    }
+}
 
 @available(tvOS 17.0, *)
 class NEObservableManager: ObservableObject {
     
     @Published fileprivate(set) var neTunnelProviderManager: NETunnelProviderManager?
+    @Published fileprivate(set) var vpnRunning: Bool
+    
+    fileprivate let _cfNotificationCenter: CFNotificationCenter
+    fileprivate var _startVpnObserver: UnsafeRawPointer?
+    fileprivate var _stopVpnObserver: UnsafeRawPointer?
     
     init(initCompletion: @escaping (NETunnelProviderManager?, (any Error)?) -> Void) {
         neTunnelProviderManager = nil
+        vpnRunning = UserDefaultsAppProperties.byeDPIVPNRunning
+        _cfNotificationCenter = CFNotificationCenterGetDarwinNotifyCenter()
+        _startVpnObserver = nil
+        _stopVpnObserver = nil
+        
+        NotificationCenter.default.addObserver(forName: .BBDVpnStarted, object: nil, queue: .main, using: handleVpnStart)
+        NotificationCenter.default.addObserver(forName: .BBDVpnStopped, object: nil, queue: .main, using: handleVpnStop)
+        
+        
+        _startVpnObserver = UnsafeRawPointer(Unmanaged.passUnretained(self).toOpaque())
+        _stopVpnObserver = UnsafeRawPointer(Unmanaged.passUnretained(self).toOpaque())
+        CFNotificationCenterAddObserver(_cfNotificationCenter, _startVpnObserver, handleByeDPIVpnStart, CFNotificationName.byeDPIVpnStarted.rawValue, nil, .deliverImmediately)
+        CFNotificationCenterAddObserver(_cfNotificationCenter, _stopVpnObserver, handleByeDPIVpnStop, CFNotificationName.byeDPIVpnStopped.rawValue, nil, .deliverImmediately)
         getOrInitNEManager(completion: initCompletion)
     }
     
+    deinit {
+        CFNotificationCenterRemoveEveryObserver(_cfNotificationCenter, _startVpnObserver)
+        CFNotificationCenterRemoveEveryObserver(_cfNotificationCenter, _stopVpnObserver)
+        NotificationCenter.default.removeObserver(self, name: .BBDVpnStarted, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .BBDVpnStopped, object: nil)
+    }
+    
     func startConnection(completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+#if DEBUG
+        if (ProcessInfo.processInfo.previewMode) {
+            //Disable real VPN connection for preview
+            vpnRunning = true
+            return
+        }
+#endif
         if let safeManager = neTunnelProviderManager {
             startConnection(manager: safeManager, completion: completion)
             return
@@ -32,6 +79,13 @@ class NEObservableManager: ObservableObject {
     }
     
     func stopConnection() {
+#if DEBUG
+        if (ProcessInfo.processInfo.previewMode) {
+            //Disable real VPN connection for preview
+            vpnRunning = false
+            return
+        }
+#endif
         if let safeManager = neTunnelProviderManager {
             safeManager.connection.stopVPNTunnel()
             return
@@ -80,12 +134,14 @@ class NEObservableManager: ObservableObject {
                 }
                 do {
                     try manager.connection.startVPNTunnel(options: startTunnelOptions)
+                    self.vpnRunning = true
                     completion(true, nil)
                 } catch {
 #if DEBUG
                     print("Start VPN error")
                     print(error)
 #endif
+                    self.vpnRunning = false
                     completion(false, error)
                 }
             }
@@ -94,6 +150,7 @@ class NEObservableManager: ObservableObject {
     
     fileprivate func getOrInitNEManager(completion: @escaping (NETunnelProviderManager?, (any Error)?) -> Void) {
         if let safeManager = neTunnelProviderManager {
+            vpnRunning = NEObservableManager.isVpnRunning(status: safeManager.connection.status)
             completion(safeManager, nil)
             return
         }
@@ -119,6 +176,35 @@ class NEObservableManager: ObservableObject {
             }
             self.neTunnelProviderManager = safeManagers[0]
             completion(safeManagers[0], nil)
+        }
+    }
+    
+    fileprivate func handleVpnStart(_ notification: Notification) {
+        if (vpnRunning) {
+            return
+        }
+        vpnRunning = true
+    }
+    
+    fileprivate func handleVpnStop(_ notification: Notification) {
+        if (!vpnRunning) {
+            return
+        }
+        vpnRunning = false
+    }
+    
+    fileprivate static func isVpnRunning(status: NEVPNStatus) -> Bool {
+        switch (status) {
+        case .connected: return true
+        case .connecting: return false
+        case .disconnecting: return false
+        case .disconnected: return false
+        case .invalid: return false
+        case .reasserting: return false
+        @unknown default:
+            print("Unknown NEVPNStatus status")
+            print(status)
+            return false
         }
     }
 }
