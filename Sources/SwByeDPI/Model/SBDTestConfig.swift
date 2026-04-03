@@ -115,7 +115,7 @@ public final class SBDTestConfig: Codable, Cloneable {
         return SBDTestConfig(domainRequestsCount: domainRequestsCount ?? self.domainRequestsCount, parallelRequestsCount: parallelRequestsCount ?? self.parallelRequestsCount, domainAnswerTimeoutInS: domainAnswerTimeoutInS ?? self.domainAnswerTimeoutInS, delayBetweenRequestsInS: delayBetweenRequestsInS ?? self.delayBetweenRequestsInS, fakeSNI: fakeSNI ?? self.fakeSNI, domainListIDs: domainListIDs ?? self.domainListIDs, strategyListIDs: strategyListIDs ?? self.strategyListIDs)
     }
     
-    /// Replacing {sni} cmd arg to defined value (romanvht/byedpi strategies adoption)
+    /// Replacing {sni} cmd arg to defined value (romanvht/byedpi strategies adaptation)
     public static func applySNIForStrategy(_ sni: String, strategy: SBDStrategy) -> SBDStrategy {
         if (sni.isEmpty) {
             return strategy

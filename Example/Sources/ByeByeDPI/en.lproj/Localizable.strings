@@ -22,9 +22,9 @@
 
 "settingsByeDPISection" = "ByeDPI";
 "settingsByeDPIArgsOption" = "ByeDPI CMD args";
+"settingsByeDPIArgsOptionDesc" = "ByeDPI command line arguments editor";
 "settingsByeDPIArgsFieldTitle" = "ByeDPI CMD args";
 "settingsByeDPIArgsFieldNoValuePlaceholder" = "No strategy args";
-"settingsByeDPIArgsOptionDesc" = "ByeDPI command line arguments editor";
 "settingsByeDPIStrategyTestOption" = "Strategy checker";
 "settingsByeDPIStrategyTestOptionDesc" = "ByeDPI multiple CMD args testing";
 "settingsByeDPITestAnalyzerOption" = "Strategy analyzer";

@@ -11,13 +11,36 @@ import SwByeDPI
 
 struct HomeScreen: View {
     
+    private enum AlertType: UInt8, Identifiable {
+        case vpnEnabledHint
+        case vpnStartError
+        
+        var id: UInt8 {
+            get {
+                return self.rawValue
+            }
+        }
+    }
+    
     @EnvironmentObject fileprivate var properties: AppProperties
     @EnvironmentObject fileprivate var lnwPermissionManager: LNWPermissionManager
     @EnvironmentObject fileprivate var neManager: NEObservableManager
     
     @State var vpnStartFailErrorText = ""
-    @State var showVpnEnabledHintAlert = false
-    @State var showVpnStartErrorAlert = false
+    @State private var showAlertType: AlertType? = nil
+    {
+        didSet {
+            if (showAlertType == nil) {
+                return
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now().advanced(by: DispatchTimeInterval.seconds(3))) {
+                if (showAlertType == nil) {
+                    return
+                }
+                showAlertType = nil
+            }
+        }
+    }
     
     fileprivate var byeDPIProxyAddr: String {
         get {
@@ -52,16 +75,10 @@ struct HomeScreen: View {
             Spacer(minLength: 16)
             if (neManager.vpnRunning) {
                 Button {
-                    if (showVpnEnabledHintAlert) {
+                    if (showAlertType == .vpnEnabledHint) {
                         return
                     }
-                    showVpnEnabledHintAlert = true
-                    DispatchQueue.main.asyncAfter(deadline: .now().advanced(by: DispatchTimeInterval.seconds(3))) {
-                        if (!showVpnEnabledHintAlert) {
-                            return
-                        }
-                        showVpnEnabledHintAlert = false
-                    }
+                    showAlertType = .vpnEnabledHint
                 } label: {
                     Text(R.string.localizable.generalSettings)
                 }
@@ -75,12 +92,19 @@ struct HomeScreen: View {
                 .padding(EdgeInsets(top: .zero, leading: 16.0, bottom: 12.0, trailing: 16.0))
             }
         }
-        .alert(isPresented: $showVpnEnabledHintAlert, content: {
-            Alert(title: Text(R.string.localizable.homeSettingsAccessHint))
+        .alert(isPresented: Binding(get: {
+            return showAlertType != nil
+        }, set: { newVal in
+            if (newVal) {
+                return
+            }
+            showAlertType = nil
+        }), content: {
+            if (!vpnStartFailErrorText.isEmpty) {
+                return Alert(title: Text(R.string.localizable.homeStartByeDPIErrTitle), message: Text(vpnStartFailErrorText))
+            }
+            return Alert(title: Text(R.string.localizable.homeSettingsAccessHint))
         })
-        .alert(isPresented: $showVpnStartErrorAlert) {
-            Alert(title: Text(R.string.localizable.homeStartByeDPIErrTitle), message: Text(vpnStartFailErrorText))
-        }
     }
     
     fileprivate func toggleVpn() {
@@ -88,7 +112,7 @@ struct HomeScreen: View {
         if (ProcessInfo.processInfo.previewMode) {
             if (neManager.vpnRunning) {
                 vpnStartFailErrorText = "Preview text error"
-                showVpnStartErrorAlert = true
+                showAlertType = .vpnStartError
                 neManager.stopConnection()
                 return
             }
@@ -116,12 +140,12 @@ struct HomeScreen: View {
                 } else {
                     self.vpnStartFailErrorText = safeErr.localizedDescription + " (" + String(describing: safeErr)
                 }
-                self.showVpnStartErrorAlert = true
+                self.showAlertType = .vpnStartError
                 return
             }
             if (!success) {
                 self.vpnStartFailErrorText = R.string.localizable.homeStartByeDPIErrUnknownMsg()
-                self.showVpnStartErrorAlert = true
+                self.showAlertType = .vpnStartError
                 return
             }
         }

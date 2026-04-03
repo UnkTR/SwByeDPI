@@ -10,13 +10,36 @@ import SwByeDPI
 
 struct HomeScreen: View {
     
+    private enum AlertType: UInt8, Identifiable {
+        case proxyEnabledHint
+        case proxyStartError
+        
+        var id: UInt8 {
+            get {
+                return self.rawValue
+            }
+        }
+    }
+    
     @EnvironmentObject fileprivate var properties: AppProperties
     @EnvironmentObject fileprivate var lnwPermissionManager: LNWPermissionManager
     
+    @State var proxyEnabled = false
     @State var proxyStartFailErrorText = ""
-    @State var vpnEnabled = false
-    @State var showProxyEnabledHintAlert = false
-    @State var showProxyStartErrorAlert = false
+    @State private var showAlertType: AlertType? = nil
+    {
+        didSet {
+            if (showAlertType == nil) {
+                return
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now().advanced(by: DispatchTimeInterval.seconds(3))) {
+                if (showAlertType == nil) {
+                    return
+                }
+                showAlertType = nil
+            }
+        }
+    }
     
     fileprivate var byeDPIProxyAddr: String {
         get {
@@ -36,11 +59,11 @@ struct HomeScreen: View {
                     .foregroundColor(.white)
             }
             .frame(width: 120, height: 120, alignment: .center)
-            .background(Color(vpnEnabled
+            .background(Color(proxyEnabled
                               ? R.color.grPositive
                               : R.color.grAccent))
             .cornerRadius(120)
-            Text(vpnEnabled ? R.string.localizable.homeVpnStateOn : R.string.localizable.homeVpnStateOff)
+            Text(proxyEnabled ? R.string.localizable.homeVpnStateOn : R.string.localizable.homeVpnStateOff)
                 .foregroundColor(Color(R.color.grSecondary))
                 .font(.caption)
                 .fontWeight(.semibold)
@@ -49,18 +72,12 @@ struct HomeScreen: View {
                 .font(.headline)
                 .fontWeight(.semibold)
             Spacer(minLength: 16)
-            if (vpnEnabled) {
+            if (proxyEnabled) {
                 Button {
-                    if (showProxyEnabledHintAlert) {
+                    if (showAlertType == .proxyEnabledHint) {
                         return
                     }
-                    showProxyEnabledHintAlert = true
-                    DispatchQueue.main.asyncAfter(deadline: .now().advanced(by: DispatchTimeInterval.seconds(3))) {
-                        if (!showProxyEnabledHintAlert) {
-                            return
-                        }
-                        showProxyEnabledHintAlert = false
-                    }
+                    showAlertType = .proxyEnabledHint
                 } label: {
                     Text(R.string.localizable.generalSettings)
                 }
@@ -74,32 +91,39 @@ struct HomeScreen: View {
                 .padding(EdgeInsets(top: .zero, leading: 16.0, bottom: 12.0, trailing: 16.0))
             }
         }
-        .alert(isPresented: $showProxyEnabledHintAlert, content: {
-            Alert(title: Text(R.string.localizable.homeSettingsAccessHint))
+        .alert(isPresented: Binding(get: {
+            return showAlertType != nil
+        }, set: { newVal in
+            if (newVal) {
+                return
+            }
+            showAlertType = nil
+        }), content: {
+            if (!proxyStartFailErrorText.isEmpty) {
+                return Alert(title: Text(R.string.localizable.homeStartByeDPIErrTitle), message: Text(proxyStartFailErrorText))
+            }
+            return Alert(title: Text(R.string.localizable.homeSettingsAccessHint))
         })
-        .alert(isPresented: $showProxyStartErrorAlert) {
-            Alert(title: Text(R.string.localizable.homeStartByeDPIErrTitle), message: Text(proxyStartFailErrorText))
-        }
     }
     
     fileprivate func toggleVpn() {
 #if DEBUG
         if (ProcessInfo.processInfo.previewMode) {
-            if (vpnEnabled) {
+            if (proxyEnabled) {
                 proxyStartFailErrorText = "Preview error text"
-                showProxyStartErrorAlert = true
-                vpnEnabled = false
+                showAlertType = .proxyStartError
+                proxyEnabled = false
                 return
             }
             proxyStartFailErrorText = ""
-            vpnEnabled = true
+            proxyEnabled = true
             return
         }
 #endif
         proxyStartFailErrorText = ""
-        if (vpnEnabled) {
+        if (proxyEnabled) {
             _ = ByeDPI.stop()
-            vpnEnabled = false
+            proxyEnabled = false
             return
         }
         if (properties.byeDPILaunchConfig.listenIP == "0.0.0.0") {
@@ -108,11 +132,11 @@ struct HomeScreen: View {
             }
         }
         let args = properties.byeDPILaunchConfig.args
-        vpnEnabled = true
+        proxyEnabled = true
         ByeDPI.start(args: args) { startErr in
-            self.vpnEnabled = false
+            self.proxyEnabled = false
             self.proxyStartFailErrorText = startErr.errorDescription
-            self.showProxyStartErrorAlert = true
+            self.showAlertType = .proxyStartError
             _ = ByeDPI.stop()
         }
     }
