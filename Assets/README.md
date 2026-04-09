@@ -9,6 +9,7 @@
 
 - [Android ByeByeDPI - https://github.com/romanvht/ByeByeDPI](https://github.com/romanvht/ByeByeDPI)
 - [ByeDPI TG channel - https://t.me/ByeDPI_Channel](https://t.me/ByeDPI_Channel)
+- [allow-domains - https://github.com/itdoginfo/allow-domains](https://github.com/itdoginfo/allow-domains)
 
 ## Strategies
 
