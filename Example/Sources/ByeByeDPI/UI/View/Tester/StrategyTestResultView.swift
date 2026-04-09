@@ -63,97 +63,98 @@ struct StrategyTestResultView: View {
     }
     
     var body: some View {
-        Button {
-            if (_strategyActionSheetShow) {
-                return
-            }
-            _strategyActionSheetShow = true
-        } label: {
-            VStack(alignment: .leading, spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 8.0) {
+            Button {
+                if (_strategyActionSheetShow) {
+                    return
+                }
+                _strategyActionSheetShow = true
+            } label: {
                 Text(_strategyCmdLine)
                     .foregroundColor(Color(R.color.grPrimary))
+                    .underline(true, color: Color(R.color.grAccent))
                     .multilineTextAlignment(.leading)
-                HStack(alignment: .center, spacing: 12.0) {
-                    ProgressView(value: _successDomainRequestsPercent, total: 1.0)
-                        .frame(maxWidth: .infinity)
-                    Text(_formattedStrategyTestProgressInfo)
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color(R.color.grSecondary))
-                }
+            }
+    #if !os(tvOS)
+            .actionSheet(isPresented: $_strategyActionSheetShow) {
+                ActionSheet(title: Text(_strategyCmdLine), buttons: [
+                    .default(Text(R.string.localizable.generalApply), action: {
+                        properties.byeDPILaunchConfig = properties.byeDPILaunchConfig.copyWith(commandArgs: _strategyCmdArgs)
+                        properties.save()
+                    }),
+                    .default(Text(R.string.localizable.generalCopy), action: {
+                        UIPasteboard.general.string = _strategyCmdLine
+                    }),
+                    .cancel(Text(R.string.localizable.generalCancel), action: {
+                        _strategyActionSheetShow = false
+                    }),
+                ])
+            }
+    #else
+            .actionSheet(isPresented: $_strategyActionSheetShow) {
+                ActionSheet(title: Text(_strategyCmdLine), buttons: [
+                    .default(Text(R.string.localizable.generalApply), action: {
+                        properties.byeDPILaunchConfig = properties.byeDPILaunchConfig.copyWith(commandArgs: _strategyCmdArgs)
+                        properties.save()
+                    }),
+                    .cancel(Text(R.string.localizable.generalCancel), action: {
+                        _strategyActionSheetShow = false
+                    }),
+                ])
+            }
+    #endif
+            HStack(alignment: .center, spacing: 12.0) {
+                ProgressView(value: _successDomainRequestsPercent, total: 1.0)
+                    .frame(maxWidth: .infinity)
+                Text(_formattedStrategyTestProgressInfo)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color(R.color.grSecondary))
+            }
 #if os(tvOS)
-                Button {
-                    _expanded = !_expanded
-                } label: {
-                    if (_expanded) {
-                        Text(R.string.localizable.byeDPITestDomainsDetailsHide)
-                    } else {
-                        Text(R.string.localizable.byeDPITestDomainsDetailsShow)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            Button {
+                _expanded = !_expanded
+            } label: {
                 if (_expanded) {
-                    VStack(alignment: .leading, spacing: 4.0) {
-                        ForEach(_domainsSuccessTestResults) { domainTestResult in
-                            VStack(alignment: .leading, spacing: .zero) {
-                                DomainTestResultView(domain: domainTestResult.domain, successRequestsCount: UInt8(domainTestResult.successRequestsCount), totalRequestsCount: UInt8(domainTestResult.totalRequestsCount))
-                                Divider()
-                            }
-                        }
-                    }
-                    .transition(.opacity)
+                    Text(R.string.localizable.byeDPITestDomainsDetailsHide)
+                } else {
+                    Text(R.string.localizable.byeDPITestDomainsDetailsShow)
                 }
-#else
-                DisclosureGroup(isExpanded: $_expanded, content: {
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            if (_expanded) {
+                VStack(alignment: .leading, spacing: 4.0) {
                     ForEach(_domainsSuccessTestResults) { domainTestResult in
                         VStack(alignment: .leading, spacing: .zero) {
                             DomainTestResultView(domain: domainTestResult.domain, successRequestsCount: UInt8(domainTestResult.successRequestsCount), totalRequestsCount: UInt8(domainTestResult.totalRequestsCount))
                             Divider()
                         }
                     }
-                }, label: {
-                    if (_expanded) {
-                        Text(R.string.localizable.byeDPITestDomainsDetailsHide)
-                    } else {
-                        Text(R.string.localizable.byeDPITestDomainsDetailsShow)
-                    }
-                    
-                })
-#endif
+                }
+                .transition(.opacity)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 8))
-            .background(Color(R.color.bgSecondary))
-            .cornerRadius(12.0)
-        }
-#if !os(tvOS)
-        .actionSheet(isPresented: $_strategyActionSheetShow) {
-            ActionSheet(title: Text(_strategyCmdLine), buttons: [
-                .default(Text(R.string.localizable.generalApply), action: {
-                    properties.byeDPILaunchConfig = properties.byeDPILaunchConfig.copyWith(commandArgs: _strategyCmdArgs)
-                    properties.save()
-                }),
-                .default(Text(R.string.localizable.generalCopy), action: {
-                    UIPasteboard.general.string = _strategyCmdLine
-                }),
-                .cancel(Text(R.string.localizable.generalCancel), action: {
-                    _strategyActionSheetShow = false
-                }),
-            ])
-        }
 #else
-        .actionSheet(isPresented: $_strategyActionSheetShow) {
-            ActionSheet(title: Text(_strategyCmdLine), buttons: [
-                .default(Text(R.string.localizable.generalApply), action: {
-                    properties.byeDPILaunchConfig = properties.byeDPILaunchConfig.copyWith(commandArgs: _strategyCmdArgs)
-                    properties.save()
-                }),
-                .cancel(Text(R.string.localizable.generalCancel), action: {
-                    _strategyActionSheetShow = false
-                }),
-            ])
-        }
+            DisclosureGroup(isExpanded: $_expanded, content: {
+                ForEach(_domainsSuccessTestResults) { domainTestResult in
+                    VStack(alignment: .leading, spacing: .zero) {
+                        DomainTestResultView(domain: domainTestResult.domain, successRequestsCount: UInt8(domainTestResult.successRequestsCount), totalRequestsCount: UInt8(domainTestResult.totalRequestsCount))
+                        Divider()
+                    }
+                }
+            }, label: {
+                if (_expanded) {
+                    Text(R.string.localizable.byeDPITestDomainsDetailsHide)
+                } else {
+                    Text(R.string.localizable.byeDPITestDomainsDetailsShow)
+                }
+                
+            })
 #endif
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 8))
+        .background(Color(R.color.bgSecondary))
+        .cornerRadius(12.0)
     }
 }
 

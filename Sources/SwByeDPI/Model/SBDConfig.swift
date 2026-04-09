@@ -17,7 +17,7 @@ public final class SBDConfig: Codable, Cloneable {
     public static let defaultListenPort: UInt16 = 10800 // Can't use default SOCKS port 1080 at iOS ('bind: Address already in use' error)
 
     /// ByeDPI SOCKS proxy default buffer size (in bytes) - 16384 bytes
-    public static let defaultBufSize: Int32 = 16384
+    public static let defaultBufSize: UInt32 = 16384
     
     /// ByeDPI SOCKS proxy default maximum client connections count - 512
     public static let defaultMaxConn: UInt16 = 512
@@ -36,7 +36,7 @@ public final class SBDConfig: Codable, Cloneable {
     public let listenPort: UInt16
     
     /// recv/send max data size in bytes
-    public let bufSize: Int32
+    public let bufSize: UInt32
     
     /// Maximum client connections count
     public let maxConn: UInt16
@@ -87,11 +87,18 @@ public final class SBDConfig: Codable, Cloneable {
         if (noUDP) {
             res.append("-U")
         }
-        res.append(contentsOf: SBDConfig.validateCmdArgs(cmdArgs))
+        res.append(contentsOf: validatedCmdArgs)
         return res
     }
+    
+    /// Validated DPI-evasion command-line arguments. I doesn't contain platform restricted DPE-evasion commands and general arguments (bind IP, port etc.)
+    public var validatedCmdArgs: [String] {
+        get {
+            return SBDConfig.validateCmdArgs(cmdArgs)
+        }
+    }
 
-    public init(listenIP: String = SBDConfig.defaultListenIP, listenPort: UInt16 = SBDConfig.defaultListenPort, bufSize: Int32 = SBDConfig.defaultBufSize, maxConn: UInt16 = SBDConfig.defaultMaxConn, ttl: UInt8? = nil, noDomain: Bool = false, noUDP: Bool = false, logLevel: SBDLogLevel? = nil, commandArgs: [String] = []) {
+    public init(listenIP: String = SBDConfig.defaultListenIP, listenPort: UInt16 = SBDConfig.defaultListenPort, bufSize: UInt32 = SBDConfig.defaultBufSize, maxConn: UInt16 = SBDConfig.defaultMaxConn, ttl: UInt8? = nil, noDomain: Bool = false, noUDP: Bool = false, logLevel: SBDLogLevel? = nil, commandArgs: [String] = []) {
         self.listenIP = listenIP
         self.listenPort = listenPort
         self.bufSize = bufSize
@@ -127,7 +134,7 @@ public final class SBDConfig: Codable, Cloneable {
     ///   - logLevel: New ByeDPI logging level. Optional
     ///   - commandArgs: New DPI-evasion command-line arguments. Optional
     /// - Returns: Cloned ByeDPI launch configuration
-    public func copyWith(listenIP: String? = nil, listenPort: UInt16? = nil, bufSize: Int32? = nil, maxConn: UInt16? = nil, ttl: UInt8? = nil, noDomain: Bool? = nil, noUDP: Bool? = nil, logLevel: SBDLogLevel? = nil, commandArgs: [String]? = nil) -> SBDConfig {
+    public func copyWith(listenIP: String? = nil, listenPort: UInt16? = nil, bufSize: UInt32? = nil, maxConn: UInt16? = nil, ttl: UInt8? = nil, noDomain: Bool? = nil, noUDP: Bool? = nil, logLevel: SBDLogLevel? = nil, commandArgs: [String]? = nil) -> SBDConfig {
         return SBDConfig(listenIP: listenIP ?? self.listenIP, listenPort: listenPort ?? self.listenPort, bufSize: bufSize ?? self.bufSize, maxConn: maxConn ?? self.maxConn, ttl: ttl ?? self.ttl, noDomain: noDomain ?? self.noDomain, noUDP: noUDP ?? self.noUDP, logLevel: logLevel ?? self.logLevel, commandArgs: commandArgs ?? self.cmdArgs)
     }
     

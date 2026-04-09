@@ -87,6 +87,7 @@ class NEObservableManager: ObservableObject {
         }
 #endif
         if let safeManager = neTunnelProviderManager {
+            vpnRunning = NEObservableManager.isVpnRunning(status: safeManager.connection.status)
             safeManager.connection.stopVPNTunnel()
             return
         }
@@ -94,6 +95,7 @@ class NEObservableManager: ObservableObject {
             guard let safeManager = manager else {
                 return
             }
+            self.vpnRunning = NEObservableManager.isVpnRunning(status: safeManager.connection.status)
             safeManager.connection.stopVPNTunnel()
         }
     }
@@ -101,6 +103,9 @@ class NEObservableManager: ObservableObject {
     fileprivate func startConnection(manager: NETunnelProviderManager, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         manager.loadFromPreferences { loadErr in
             if let safeLoadErr = loadErr {
+                if (self.vpnRunning) {
+                    self.vpnRunning = false
+                }
                 completion(false, safeLoadErr)
                 return
             }
@@ -117,6 +122,7 @@ class NEObservableManager: ObservableObject {
             }
             if #available(iOS 14.2, *) {
                 vpnProtocol.excludeLocalNetworks = true
+                vpnProtocol.enforceRoutes = false
             }
             if #available(iOS 17.4, *) {
                 vpnProtocol.excludeDeviceCommunication = true
@@ -124,6 +130,9 @@ class NEObservableManager: ObservableObject {
             manager.protocolConfiguration = vpnProtocol
             manager.saveToPreferences { saveErr in
                 if let safeSaveErr = saveErr {
+                    if (self.vpnRunning) {
+                        self.vpnRunning = false
+                    }
                     completion(false, safeSaveErr)
                     return
                 }
@@ -141,7 +150,9 @@ class NEObservableManager: ObservableObject {
                     print("Start VPN error")
                     print(error)
 #endif
-                    self.vpnRunning = false
+                    if (self.vpnRunning) {
+                        self.vpnRunning = false
+                    }
                     completion(false, error)
                 }
             }
@@ -164,6 +175,9 @@ class NEObservableManager: ObservableObject {
                 print("NE Tunnel Provider managers array from cache is nil - Init the new one")
                 let manager = NETunnelProviderManager()
                 self.neTunnelProviderManager = manager
+                if (self.vpnRunning) {
+                    self.vpnRunning = false
+                }
                 completion(manager, nil)
                 return
             }
@@ -171,10 +185,14 @@ class NEObservableManager: ObservableObject {
                 print("NE Tunnel Provider managers array from cache is empty -> Init the new one")
                 let manager = NETunnelProviderManager()
                 self.neTunnelProviderManager = manager
+                if (self.vpnRunning) {
+                    self.vpnRunning = false
+                }
                 completion(manager, nil)
                 return
             }
             self.neTunnelProviderManager = safeManagers[0]
+            self.vpnRunning = NEObservableManager.isVpnRunning(status: safeManagers[0].connection.status)
             completion(safeManagers[0], nil)
         }
     }

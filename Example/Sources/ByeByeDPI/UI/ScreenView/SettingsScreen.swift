@@ -203,7 +203,7 @@ struct SettingsScreen: View {
                         }
                         return true
                     }, onNewValue: { newVal in
-                        guard let parsedNum = Int32(newVal), parsedNum > 0 else {
+                        guard let parsedNum = UInt32(newVal), parsedNum > 0 else {
                             return
                         }
                         if (properties.byeDPILaunchConfig.bufSize == parsedNum) {

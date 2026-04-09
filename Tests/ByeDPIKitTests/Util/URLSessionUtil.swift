@@ -17,8 +17,14 @@ public class URLSessionUtil {
     
     private init() {}
     
-    public static func initHttpProxySession(addr: String, port: UInt16) -> URLSession {
-        let configuration = URLSessionConfiguration.default
+    public static func initHttpProxySession(addr: String, port: UInt16, timeoutIntervalForResourceInS: UInt16? = nil, ephemeral: Bool = false) -> URLSession {
+        var configuration = URLSessionConfiguration.default
+        if (ephemeral) {
+            configuration = URLSessionConfiguration.ephemeral
+        }
+        if let safeTimeoutIntervalForResourceInS = timeoutIntervalForResourceInS, safeTimeoutIntervalForResourceInS > 0 {
+            configuration.timeoutIntervalForResource = TimeInterval(safeTimeoutIntervalForResourceInS)
+        }
         configuration.connectionProxyDictionary = [
             "HTTPSEnable": 1,//kCFNetworkProxiesHTTPEnable as String: 1,
             "HTTPSProxy": addr,//kCFNetworkProxiesHTTPProxy as String: addr,
@@ -28,15 +34,21 @@ public class URLSessionUtil {
         return session
     }
     
-    public static func initSocksProxySession(addr: String, port: UInt16) -> URLSession {
-        let configuration = URLSessionConfiguration.default
+    public static func initSocksProxySession(addr: String, port: UInt16, timeoutIntervalForResourceInS: UInt16? = nil, ephemeral: Bool = false) -> URLSession {
+        var configuration = URLSessionConfiguration.default
+        if (ephemeral) {
+            configuration = URLSessionConfiguration.ephemeral
+        }
+        if let safeTimeoutIntervalForResourceInS = timeoutIntervalForResourceInS, safeTimeoutIntervalForResourceInS > 0 {
+            configuration.timeoutIntervalForResource = TimeInterval(safeTimeoutIntervalForResourceInS)
+        }
         configuration.connectionProxyDictionary = [
             //kCFNetworkProxiesSOCKSEnable: true,
             //kCFNetworkProxiesSOCKSProxy: addr,
             //kCFNetworkProxiesSOCKSPort: port,
             "SOCKSEnable": true,//kCFStreamPropertySOCKSProxyHost: true,
             "SOCKSProxy": addr,//kCFStreamPropertySOCKSProxyPort: addr,
-            "SOCKSPort": port,//kCFStreamPropertySOCKSProxyPort: port
+            "SOCKSPort": port,//kCFStreamPropertySOCKSProxyPort: port,
             "kCFStreamPropertySOCKSVersion": "kCFStreamSocketSOCKSVersion5",//kCFStreamPropertySOCKSVersion: kCFStreamSocketSOCKSVersion5
         ]
         

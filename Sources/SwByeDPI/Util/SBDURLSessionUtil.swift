@@ -22,9 +22,17 @@ public final class SBDURLSessionUtil {
     /// - Parameters:
     ///   - addr: HTTP proxy address
     ///   - port: HTTP proxy port
+    ///   - timeoutIntervalForResourceInS: The maximum amount of time that a resource request should be allowed to take
+    ///   - ephemeral: Use ephemeral URL session (no cache, cookies, credentials)
     /// - Returns: URL Session with HTTP proxy settings
-    public static func initHttpProxySession(addr: String, port: UInt16) -> URLSession {
-        let configuration = URLSessionConfiguration.default
+    public static func initHttpProxySession(addr: String, port: UInt16, timeoutIntervalForResourceInS: UInt16? = nil, ephemeral: Bool = false) -> URLSession {
+        var configuration = URLSessionConfiguration.default
+        if (ephemeral) {
+            configuration = URLSessionConfiguration.ephemeral
+        }
+        if let safeTimeoutIntervalForResourceInS = timeoutIntervalForResourceInS, safeTimeoutIntervalForResourceInS > 0 {
+            configuration.timeoutIntervalForResource = TimeInterval(safeTimeoutIntervalForResourceInS)
+        }
         configuration.connectionProxyDictionary = [
             "HTTPSEnable": 1,//kCFNetworkProxiesHTTPEnable as String: 1,
             "HTTPSProxy": addr,//kCFNetworkProxiesHTTPProxy as String: addr,
@@ -38,9 +46,17 @@ public final class SBDURLSessionUtil {
     /// - Parameters:
     ///   - addr: SOCKS5 proxy address
     ///   - port: SOCKS5 proxy port
+    ///   - timeoutIntervalForResourceInS: The maximum amount of time that a resource request should be allowed to take
+    ///   - ephemeral: Use ephemeral URL session (no cache, cookies, credentials). Useful for strategy testing
     /// - Returns: URL Session with SOCKS5 proxy settings
-    public static func initSocksProxySession(addr: String, port: UInt16) -> URLSession {
-        let configuration = URLSessionConfiguration.default
+    public static func initSocksProxySession(addr: String, port: UInt16, timeoutIntervalForResourceInS: UInt16? = nil, ephemeral: Bool = false) -> URLSession {
+        var configuration = URLSessionConfiguration.default
+        if (ephemeral) {
+            configuration = URLSessionConfiguration.ephemeral
+        }
+        if let safeTimeoutIntervalForResourceInS = timeoutIntervalForResourceInS, safeTimeoutIntervalForResourceInS > 0 {
+            configuration.timeoutIntervalForResource = TimeInterval(safeTimeoutIntervalForResourceInS)
+        }
         configuration.connectionProxyDictionary = [
             //kCFNetworkProxiesSOCKSEnable: true,
             //kCFNetworkProxiesSOCKSProxy: addr,

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-#if canImport(UIKit)
+#if canImport(UIKit) && canImport(TextFieldAlert)
 import TextFieldAlert
 #endif
 
@@ -25,7 +25,7 @@ struct UniversalTextFieldAlert: ViewModifier {
     fileprivate let action: (String) -> Void
 
     func body(content: Content) -> some View {
-#if os(iOS) || os(tvOS)
+#if canImport(TextFieldAlert) && (os(iOS) || os(tvOS))
         content.textFieldAlert(title: title, textFields: [
             TextFieldAlert.TextField(text: $tfValue, placeholder: placeholder, isSecureTextEntry: false, autocapitalizationType: autocapitalizationType.UIKitAdaptedValue, autocorrectionType: .default, keyboardType: keyboardType.UIKitAdaptedValue)
         ], actions: [

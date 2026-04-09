@@ -6,16 +6,16 @@
 //
 
 import CoreFoundation
-import OSLog
+import SystemConfiguration
 import NetworkExtension
 import Tun2SocksKit
 import ByeDPIKit
+//import OSLog
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
-    /*
     // Redirects Tun2SOCKS, byedpi stdout/stderr to Console.app
-    fileprivate static func setupLogRedirection() {
+    /*fileprivate static func setupLogRedirection() {
         let pipe = Pipe()
         dup2(pipe.fileHandleForWriting.fileDescriptor, STDOUT_FILENO)
         dup2(pipe.fileHandleForWriting.fileDescriptor, STDERR_FILENO)
@@ -33,40 +33,96 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             }
         }
     }*/
+    
+    private enum NetworkInterface: UInt8 {
+        case none
+        case wifi
+        case wwan
+    }
+    
+    private static var enabledNetworkInterface: NetworkInterface {
+        get {
+            var zeroAddress = sockaddr_in()
+            zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+            zeroAddress.sin_family = sa_family_t(AF_INET)
+            
+            guard let reachability = withUnsafePointer(to: &zeroAddress, {
+                $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                    SCNetworkReachabilityCreateWithAddress(nil, $0)
+                }
+            }) else {
+                return .none
+            }
+            
+            var flags: SCNetworkReachabilityFlags = []
+            if (!SCNetworkReachabilityGetFlags(reachability, &flags)) {
+                return .none
+            }
+            
+            let isReachable = flags.contains(.reachable)
+            let needsConnection = flags.contains(.connectionRequired)
+            let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+            let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+            
+            let isNetworkReachable = isReachable && (!needsConnection || canConnectWithoutUserInteraction)
+            
+            if !isNetworkReachable {
+                return .none
+            }
+            
+            #if os(iOS)
+            if flags.contains(.isWWAN) {
+                return .wwan
+            }
+            #endif
+            
+            return .wifi
+        }
+    }
 
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-#if DEBUG
-        var listenIp = options?[UserDefaultsAppKeys.selectedByeDPIListenIpAddrKey.rawValue] as? String ?? "127.0.0.1"
-        if (listenIp == "127.0.0.1" || listenIp == "::1") {
-            if let localAddress = getWiFiAddress(), !localAddress.isEmpty {
-                listenIp = localAddress
-            }
+        let cachedConfig = protocolConfiguration as? NETunnelProviderProtocol
+        let stockSocksListenIp = options?[UserDefaultsAppKeys.selectedByeDPIListenIpAddrKey.rawValue] as? String ?? cachedConfig?.byeDPIListenIp ?? "127.0.0.1"
+        var socksListenIp = stockSocksListenIp
+        if (socksListenIp == "127.0.0.1" || socksListenIp == "::1" || socksListenIp == "0.0.0.0" || socksListenIp == "::") {
+            //Update listen IP
+            if (PacketTunnelProvider.enabledNetworkInterface == .wifi) {
+                //Wi-Fi or Ethernet -> Get device local IP address
+                if let localAddress = getLNWAddress(), !localAddress.isEmpty {
+                    socksListenIp = localAddress
+                } else {
+                    socksListenIp = "0.0.0.0"
+                }
+            }/* else {
+                if let cellularAddress = getCellularAddress(), !cellularAddress.isEmpty {
+                   socksListenIp = cellularAddress
+                } else {
+                    socksListenIp = "0.0.0.0"
+                }
+            }*/
         }
-#else
-        let listenIp = options?[UserDefaultsAppKeys.selectedByeDPIListenIpAddrKey.rawValue] as? String ?? "127.0.0.1"
-#endif
         
-        var port = options?[UserDefaultsAppKeys.selectedByeDPIListenPortKey.rawValue] as? UInt16 ?? 10800
+        var port = options?[UserDefaultsAppKeys.selectedByeDPIListenPortKey.rawValue] as? UInt16 ?? cachedConfig?.byeDPIListenPort ?? 10800
         if (port == 0) {
             port = 10800
         }
-        var bufSize = options?[UserDefaultsAppKeys.selectedByeDPIBufSizeKey.rawValue] as? Int32 ?? 16384
+        var bufSize = options?[UserDefaultsAppKeys.selectedByeDPIBufSizeKey.rawValue] as? UInt32 ?? cachedConfig?.byeDPIBufSize ?? 16384
         if (bufSize == 0) {
             bufSize = 16384
         }
-        var maxConn = options?[UserDefaultsAppKeys.selectedByeDPIMaxConn.rawValue] as? UInt16 ?? 512
+        var maxConn = options?[UserDefaultsAppKeys.selectedByeDPIMaxConn.rawValue] as? UInt16 ?? cachedConfig?.byeDPIMaxConn ?? 512
         if (maxConn == 0) {
             maxConn = 512
         }
-        let ttl = options?[UserDefaultsAppKeys.selectedByeDPITTL.rawValue] as? UInt8
-        let noDomain = options?[UserDefaultsAppKeys.byeDPIRestrictDomainResolve.rawValue] as? Bool ?? false
-        let noUDP = options?[UserDefaultsAppKeys.byeDPIRestrictUDP.rawValue] as? Bool ?? false
-        let logLevelRaw = options?[UserDefaultsAppKeys.selectedbyeDPILogLevel.rawValue] as? UInt8
+        let ttl = options?[UserDefaultsAppKeys.selectedByeDPITTL.rawValue] as? UInt8 ?? cachedConfig?.byeDPITTL
+        let noDomain = options?[UserDefaultsAppKeys.byeDPIRestrictDomainResolve.rawValue] as? Bool ?? cachedConfig?.byeDPINoDomains ?? false
+        let noUDP = options?[UserDefaultsAppKeys.byeDPIRestrictUDP.rawValue] as? Bool ?? cachedConfig?.byeDPINoUDP ?? false
+        let logLevelRaw = options?[UserDefaultsAppKeys.selectedbyeDPILogLevel.rawValue] as? UInt8 ?? cachedConfig?.byeDPILogLevel
         var args: [String] = [
-            "-i", listenIp,
+            "-i", socksListenIp,
             "-p", String(port),
             "-b", String(bufSize),
-            "-c", String(maxConn),
+            "-c", String(maxConn)
         ]
         if let safeTtl = ttl, safeTtl != 0 {
             args.append(contentsOf: ["-g", String(safeTtl)])
@@ -81,12 +137,15 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             args.append(contentsOf: ["-x", String(safeLogLevel)])
         }
         
-        if let safeArgs = options?[UserDefaultsAppKeys.selectedByeDPICmdArgsKey.rawValue] as? [String], !safeArgs.isEmpty {
+        if let safeArgs = options?[UserDefaultsAppKeys.selectedByeDPICmdArgsKey.rawValue] as? [String] ?? cachedConfig?.byeDPICmdArgs, !safeArgs.isEmpty {
             args = safeArgs
+            if (args[0] == "-i" && args.count > 1) {
+                //Override config bind ip address
+                args[1] = socksListenIp
+            }
         }
         
-        let tunMtu = options?[UserDefaultsAppKeys.selectedTunMtuKey.rawValue] as? UInt16 ?? 1500
-        var tunUdp = "'udp'"//Plain DNS
+        let tunMtu = options?[UserDefaultsAppKeys.selectedTunMtuKey.rawValue] as? UInt16 ?? cachedConfig?.tunMtu ?? 1500
         let tunIpAddr = "10.0.0.1"
         //iOS <10 - ~5mb memory max
         //iOS 10..14 - 15 mb memory max
@@ -98,8 +157,8 @@ tunnel:
 
 socks5:
   port: \(port)
-  address: \(listenIp)
-  udp: \(tunUdp)
+  address: \(socksListenIp)
+  udp: 'udp'
 
 misc:
   task-stack-size: 24576 # 20480 + tcp-buffer-size 
@@ -112,17 +171,16 @@ misc:
         //PacketTunnelProvider.setupLogRedirection()
 #endif
         
-        let tunnelSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: tunIpAddr)
+        let tunnelSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: socksListenIp)
         tunnelSettings.mtu = NSNumber(integerLiteral: Int(tunMtu))
         //Set default DNS
         let dnsSettings = NEDNSSettings(servers: ["8.8.8.8", "8.8.4.4", "1.1.1.1"])
         dnsSettings.matchDomains = [""]
         tunnelSettings.dnsSettings = dnsSettings
-        if let safeDnsAddr = options?[UserDefaultsAppKeys.selectedDnsOverAddrKey.rawValue] as? String, !safeDnsAddr.isEmpty {
+        if let safeDnsAddr = options?[UserDefaultsAppKeys.selectedDnsOverAddrKey.rawValue] as? String ?? cachedConfig?.dnsOverAddr, !safeDnsAddr.isEmpty {
             if (safeDnsAddr.hasPrefix("http") || safeDnsAddr.split(separator: ".").count != 4) {
                 //DoH or DoT
-                if let safeResolvedServers = options?[UserDefaultsAppKeys.resolvedDnsServersKey.rawValue] as? [String], !safeResolvedServers.isEmpty {
-                    tunUdp = "tcp"
+                if let safeResolvedServers = options?[UserDefaultsAppKeys.resolvedDnsServersKey.rawValue] as? [String] ?? cachedConfig?.resolvedDnsServers, !safeResolvedServers.isEmpty {
                     if (safeDnsAddr.hasPrefix("http")) {
                         //DoH
                         let dohSettings = NEDNSOverHTTPSSettings(servers: safeResolvedServers)
@@ -151,7 +209,7 @@ misc:
             NEIPv4Route.default()
         ]
         ipv4Settings.excludedRoutes = [
-            NEIPv4Route(destinationAddress: listenIp, subnetMask: "255.255.255.255"),
+            NEIPv4Route(destinationAddress: socksListenIp, subnetMask: "255.255.255.255"),
             NEIPv4Route(destinationAddress: "192.168.0.1", subnetMask: "255.255.0.0"),
             NEIPv4Route(destinationAddress: "172.16.0.1", subnetMask: "255.240.0.0"),
             
@@ -180,6 +238,10 @@ misc:
             Task(priority: .high) {
                 if let byeDPIStartErr = await ByeDPI.start(args: args) {
                     completionHandler(byeDPIStartErr)
+                    UserDefaultsAppProperties.byeDPIVPNRunning = false
+                    if let safeCenter = CFNotificationCenterGetDarwinNotifyCenter() {
+                        CFNotificationCenterPostNotification(safeCenter, .byeDPIVpnStopped, nil, nil, true)
+                    }
                     return
                 }
                 let hevSocksStartOpCode = await Socks5Tunnel.run(with: tun2SocksConfig)
@@ -191,10 +253,11 @@ misc:
                     completionHandler(nil)
                     return
                 }
-#if DEBUG
-                print("SOCKS2TUN start err - code " + String(hevSocksStartOpCode))
-#endif
                 _ = ByeDPI.forceStop()
+                UserDefaultsAppProperties.byeDPIVPNRunning = false
+                if let safeCenter = CFNotificationCenterGetDarwinNotifyCenter() {
+                    CFNotificationCenterPostNotification(safeCenter, .byeDPIVpnStopped, nil, nil, true)
+                }
                 completionHandler(NSError(domain: NEVPNErrorDomain, code: Int(hevSocksStartOpCode)))
             }
         }
@@ -233,8 +296,7 @@ misc:
         }
     }
     
-#if DEBUG
-    func getWiFiAddress() -> String? {
+    func getLNWAddress() -> String? {
         var address: String?
 
         var ifaddr: UnsafeMutablePointer<ifaddrs>?
@@ -265,5 +327,36 @@ misc:
 
         return address
     }
-#endif
+    
+    func getCellularAddress() -> String? {
+        var address: String?
+
+        var ifaddr: UnsafeMutablePointer<ifaddrs>?
+        guard getifaddrs(&ifaddr) == 0 else { return nil }
+        guard let firstAddr = ifaddr else { return nil }
+
+        for ptr in sequence(first: firstAddr, next: { $0.pointee.ifa_next }) {
+            let interface = ptr.pointee
+            let addrFamily = interface.ifa_addr.pointee.sa_family
+
+            if addrFamily == UInt8(AF_INET) {
+                let name = String(cString: interface.ifa_name)
+                if (!name.hasPrefix("pdp_ip")) {
+                    // Not cellular -> Skip
+                    continue
+                }
+                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                getnameinfo(interface.ifa_addr, socklen_t(interface.ifa_addr.pointee.sa_len),
+                            &hostname, socklen_t(hostname.count),
+                            nil, socklen_t(0), NI_NUMERICHOST)
+                address = String(cString: hostname)
+                if (name == "pdp_ip0") {
+                    break
+                }
+            }
+        }
+        freeifaddrs(ifaddr)
+
+        return address
+    }
 }

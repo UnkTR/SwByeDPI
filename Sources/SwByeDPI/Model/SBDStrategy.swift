@@ -102,7 +102,7 @@ public final class SBDStrategy: Hashable, Codable, CustomStringConvertible {
     }
     
     /// Transform DPI-evasion strategy to ByeDPI launch config
-    public func generateConfig(listenIP: String = SBDConfig.defaultListenIP, listenPort: UInt16 = SBDConfig.defaultListenPort, bufSize: Int32 = SBDConfig.defaultBufSize, maxConn: UInt16 = SBDConfig.defaultMaxConn, ttl: UInt8? = nil, noDomain: Bool = false, noUDP: Bool = false, logLevel: SBDLogLevel? = nil) -> SBDConfig {
+    public func generateConfig(listenIP: String = SBDConfig.defaultListenIP, listenPort: UInt16 = SBDConfig.defaultListenPort, bufSize: UInt32 = SBDConfig.defaultBufSize, maxConn: UInt16 = SBDConfig.defaultMaxConn, ttl: UInt8? = nil, noDomain: Bool = false, noUDP: Bool = false, logLevel: SBDLogLevel? = nil) -> SBDConfig {
         let validatedCmdArgs = SBDConfig.validateCmdArgs(cmdArgs)
         return SBDConfig(listenIP: listenIP, listenPort: listenPort, bufSize: bufSize, maxConn: maxConn, ttl: ttl, noDomain: noDomain, noUDP: noUDP, logLevel: logLevel, commandArgs: validatedCmdArgs)
     }

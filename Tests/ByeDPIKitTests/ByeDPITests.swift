@@ -88,7 +88,7 @@ final class ByeDPITests: XCTestCase {
             exp.fulfill()
         }
         let req = URLRequest(url: URL(string: "https://google.com")!)
-        let proxySession = URLSessionUtil.initSocksProxySession(addr: "127.0.0.1", port: 10800)
+        let proxySession = URLSessionUtil.initSocksProxySession(addr: "127.0.0.1", port: 10800, ephemeral: true)
         let task = proxySession.dataTask(with: req) { (data, response, err) in
             guard let safeData = data else {
                 XCTAssertTrue(false, "Received nil response data. Possible invalid proxy session settings or DPI blockings")
@@ -108,7 +108,7 @@ final class ByeDPITests: XCTestCase {
         let startRes = await ByeDPI.start(args: ByeDPITests._args)
         XCTAssertNil(startRes, "Async byedpi start error")
         let req = URLRequest(url: URL(string: "https://google.com")!)
-        let proxySession = URLSessionUtil.initSocksProxySession(addr: "127.0.0.1", port: 10800)
+        let proxySession = URLSessionUtil.initSocksProxySession(addr: "127.0.0.1", port: 10800, ephemeral: true)
         let task = proxySession.dataTask(with: req) { (data, response, err) in
             if let httpResponse = response as? HTTPURLResponse {
                 XCTAssertNotEqual(httpResponse.statusCode, 0, "Invalid response")

@@ -1,6 +1,6 @@
 import Foundation
 
-public final class SBDStrategyCoverage: Sendable {
+public final class SBDStrategyCoverage {
 
     public let strategy: SBDStrategy
     
@@ -33,3 +33,7 @@ public final class SBDStrategyCoverage: Sendable {
         self.sldCoverage = clonedCoverage
     }   
 }
+
+#if swift(>=5.5)
+extension SBDStrategyCoverage: Sendable {}
+#endif

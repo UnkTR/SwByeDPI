@@ -89,7 +89,7 @@ public final class SBDByeDPIAndroidConfig: Decodable {
     }
 }
 
-fileprivate final class SBDAndroidByeDPIHistory: Sendable, Decodable {
+fileprivate final class SBDAndroidByeDPIHistory: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case pinned
@@ -112,7 +112,7 @@ fileprivate final class SBDAndroidByeDPIHistory: Sendable, Decodable {
     
 }
 
-fileprivate final class SBDAndroidByeDPISettings: Sendable, Decodable {
+fileprivate final class SBDAndroidByeDPISettings: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case testLogClickable = "byedpi_proxytest_logclickable"
@@ -267,4 +267,6 @@ fileprivate final class SBDAndroidByeDPISettings: Sendable, Decodable {
 
 #if swift(>=5.5)
 extension SBDByeDPIAndroidConfig: Sendable {}
+extension SBDAndroidByeDPIHistory: Sendable {}
+extension SBDAndroidByeDPISettings: Sendable {}
 #endif

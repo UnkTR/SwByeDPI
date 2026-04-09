@@ -234,7 +234,7 @@ public class SBDTestController {
         let strategyTestFinishSemaphore = DispatchSemaphore(value: 0)
         for i in 0...taskDomains.count - 1 {
             DispatchQueue.global().async {
-                let socksProxySession = SBDURLSessionUtil.initSocksProxySession(addr: byeDPIConfig.listenIP, port: byeDPIConfig.listenPort)
+                let socksProxySession = SBDURLSessionUtil.initSocksProxySession(addr: byeDPIConfig.listenIP, port: byeDPIConfig.listenPort, timeoutIntervalForResourceInS: UInt16(config.domainAnswerTimeoutInS), ephemeral: true)
                 var strategyScanResult: [String: SBDDomainTestResult] = [:]
                 for domain in taskDomains[i] {
                     if (Thread.current.isCancelled || cancelTkSource.cancellationToken.cancellationRequested) {
@@ -306,14 +306,13 @@ public class SBDTestController {
             print("Testing domain '" + domain + "' availability - " + String(i + 1) + "/" + String(requestsCount))
             #endif          
             let semaphore = DispatchSemaphore(value: 0)
-            let urlReq = URLRequest(url: safeDomainUrl, timeoutInterval: TimeInterval(answerTimeoutInS))
+            let urlReq = URLRequest(url: safeDomainUrl, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: TimeInterval(answerTimeoutInS))
             let task = proxySession.dataTask(with: urlReq) { responseData, urlResponse, err in
-                guard let _ = responseData else {
+                if let _ = responseData {
+                    successIncrementor.increment()
+                } else {
                     failIncrementor.increment()
-                    semaphore.signal()
-                    return
                 }
-                successIncrementor.increment()
                 semaphore.signal()
             }
             task.resume()
@@ -527,7 +526,7 @@ extension SBDTestController {
             let totalFailRequestsIncrementor = ConcurrentIncrementor()
             for i in 0..<taskDomains.count {
                 group.addTask {
-                    let socksProxySession = SBDURLSessionUtil.initSocksProxySession(addr: byeDPIConfig.listenIP, port: byeDPIConfig.listenPort)
+                    let socksProxySession = SBDURLSessionUtil.initSocksProxySession(addr: byeDPIConfig.listenIP, port: byeDPIConfig.listenPort, timeoutIntervalForResourceInS: UInt16(config.domainAnswerTimeoutInS), ephemeral: true)
                     var taskScanResult: [SBDDomainTestResult] = []
                     for domain in taskDomains[i] {
                         if (cancelTkSource.cancellationToken.cancellationRequested) {
@@ -600,27 +599,24 @@ extension SBDTestController {
             #if DEBUG
             print("Testing domain '" + domain + "' availability - " + String(i + 1) + "/" + String(requestsCount))
             #endif
-            let urlReq = URLRequest(url: safeDomainUrl, timeoutInterval: TimeInterval(answerTimeoutInS))
+            let urlReq = URLRequest(url: safeDomainUrl, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: TimeInterval(answerTimeoutInS))
             do {
                 let response = try await proxySession.data(for: urlReq)
                 if (!response.0.isEmpty) {
                     success += 1
-                    continue
-                }
-                guard let httpResponse = response.1 as? HTTPURLResponse else {
-                    fail += 1
-                    continue
-                }
-                if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
-                    success += 1
-                } else if let safeContentLength = httpResponse.allHeaderFields["Content-Length"] as? String, !safeContentLength.isEmpty {
-                    success += 1
+                } else if let httpResponse = response.1 as? HTTPURLResponse {
+                    if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
+                        success += 1
+                    } else if let safeContentLength = httpResponse.allHeaderFields["Content-Length"] as? String, !safeContentLength.isEmpty {
+                        success += 1
+                    } else {
+                        fail += 1
+                    }
                 } else {
                     fail += 1
                 }
             } catch {
                 fail += 1
-                continue
             }
             notifyTestingDomainProgressUpdate(domain, strategyID: strategy.id, successRequestsCount: success, failRequestsCount: fail, totalRequestsCount: Int(requestsCount))
             if (delayBetweenRequestsInS == 0 || cancelTkSource.cancellationToken.cancellationRequested) {

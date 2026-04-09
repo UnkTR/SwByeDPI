@@ -63,13 +63,15 @@ struct ByeDPIStrategyTesterScreen: View {
             .fontWeight(.semibold)
             .padding(.horizontal, 16)
             ScrollView(.vertical) {
-                ForEach(0..<testManager.lastCheckResults.count, id: \.self) { index in
-                    let strategyTestResult = testManager.lastCheckResults[index]
-                    StrategyTestResultView(strategyCmdArgs: strategyTestResult.strategy.cmdArgs, totalDomainRequestsCount: _totalDomainRequestsCount, domainsSuccessTestResults: strategyTestResult.sortedDomainsTestsResult.map({ domainTestResult in
-                        return (domain: domainTestResult.domain, successRequestsCount: domainTestResult.successRequestsCount, failRequestsCount: domainTestResult.failedRequestsCount)
-                    }))
+                LazyVStack(alignment: .leading, spacing: 8.0) {
+                    ForEach(0..<testManager.lastCheckResults.count, id: \.self) { index in
+                        let strategyTestResult = testManager.lastCheckResults[index]
+                        StrategyTestResultView(strategyCmdArgs: strategyTestResult.strategy.cmdArgs, totalDomainRequestsCount: _totalDomainRequestsCount, domainsSuccessTestResults: strategyTestResult.sortedDomainsTestsResult.map({ domainTestResult in
+                            return (domain: domainTestResult.domain, successRequestsCount: domainTestResult.successRequestsCount, failRequestsCount: domainTestResult.failedRequestsCount)
+                        }))
+                    }
+                    .padding(.horizontal, 12)
                 }
-                .padding(.horizontal, 12)
             }
         }
         .onAppear {
