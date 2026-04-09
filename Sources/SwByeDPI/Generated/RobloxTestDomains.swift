@@ -5,6 +5,8 @@ public final class RobloxTestDomains {
   /// Domains list
   public static let domainsList = SBDDomainList(name: "RobloxTestDomains", domains: Set<String>([
       "roblox.com",
+      "robloxdev.com",
+      "rbxinfra.net",
       "css.rbxcdn.com",
       "images.rbxcdn.com",
       "tr.rbxcdn.com",

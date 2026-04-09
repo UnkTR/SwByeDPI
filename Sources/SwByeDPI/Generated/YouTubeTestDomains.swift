@@ -5,7 +5,12 @@ public final class YouTubeTestDomains {
   /// Domains list
   public static let domainsList = SBDDomainList(name: "YouTubeTestDomains", domains: Set<String>([
       "youtu.be",
+      "yt.be",
       "youtube.com",
+      "yting.com",
+      "youtubekids.com",
+      "youtube-nocookie.com",
+      "returnyoutubedislikeapi.com",
       "i.ytimg.com",
       "i9.ytimg.com",
       "yt3.ggpht.com",

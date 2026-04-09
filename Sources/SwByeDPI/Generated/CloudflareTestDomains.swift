@@ -8,5 +8,8 @@ public final class CloudflareTestDomains {
       "cloudflare.com",
       "cloudflarecn.net",
       "cloudflare-ech.com",
+      "one.one.one.one",
+      "cloudflarestatus.com",
+      "cdnjs.com",
   ]))
   fileprivate init() {} }

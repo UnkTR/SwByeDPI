@@ -1,0 +1,36 @@
+import Foundation
+
+/// Generated domains from GoogleAiTestDomains.domains
+public final class GoogleAiTestDomains {
+  /// Domains list
+  public static let domainsList = SBDDomainList(name: "GoogleAiTestDomains", domains: Set<String>([
+      "deepmind.com",
+      "deepmind.google",
+      "geller-pa.googleapis.com",
+      "generativelanguage.googleapis.com",
+      "proactivebackend-pa.googleapis.com",
+      "ai.google.dev",
+      "generativeai.google",
+      "makersuite.google.com",
+      "aistudio.google.com",
+      "bard.google.com",
+      "gemini.google",
+      "gemini.google.com",
+      "notebooklm.google.com",
+      "clients6.google.com",
+      "notebooklm.google",
+      "jules.google",
+      "jules.google.com",
+      "labs.google",
+      "aisandbox-pa.googleapis.com",
+      "stitch.withgoogle.com",
+      "robinfrontend-pa.googleapis.com",
+      "aida.googleapis.com",
+      "antigravity-pa.googleapis.com",
+      "antigravity.googleapis.com",
+      "antigravity.google",
+      "antigravity-unleash.goog",
+      "firebaseinstallations.googleapis.com",
+      "speechs3proto2-pa.googleapis.com",
+  ]))
+  fileprivate init() {} }
