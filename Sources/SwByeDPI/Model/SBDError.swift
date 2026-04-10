@@ -6,7 +6,7 @@
 //
 
 ///Represents general exceptions of framework
-public enum SBDError
+public enum SBDError: Sendable
 {
     ///General-purpose error
     case general(errCode: Int, desc: String)
@@ -30,7 +30,3 @@ extension SBDError: Error {
         }
     }
 }
-
-#if swift(>=5.5)
-extension SBDError: Sendable {}
-#endif

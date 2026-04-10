@@ -91,7 +91,8 @@ struct ByeByeDPIApp: App {
         if (strategiesMngr.lists.isEmpty) {
             //Define built-in strategies for empty manager
             strategiesMngr.controller.addListItems([
-                BuiltInDPIeStrategies.strategiesList
+                BuiltInDPIeStrategies.strategiesList,
+                ExternalDPIeStrategies.strategiesList,
             ])
         }
         _strategiesManager = StateObject(wrappedValue: strategiesMngr)

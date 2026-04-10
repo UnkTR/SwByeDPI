@@ -10,17 +10,10 @@ import Foundation
 /// Abstract named list control delegate (internal specification)
 protocol SBDObjNamedListControlDelegate: SBDObjControlDelegate {
     
-#if swift(>=5.5)
     /// List key (ID) type alias
     associatedtype ItemsListKeyType: Hashable, Sendable
     /// List type alias
     associatedtype ItemsListType: Sendable, SBDNamedListDelegate
-#else
-    /// List key (ID) type alias
-    associatedtype ItemsListKeyType: Hashable
-    /// List type alias
-    associatedtype ItemsListType: SBDNamedListDelegate
-#endif
     
     /// New lists added to collection event name
     var itemListsAddEventPayloadKeyName: String {get}
@@ -70,17 +63,10 @@ protocol SBDObjNamedListControlDelegate: SBDObjControlDelegate {
 /// Abstract named list control delegate (public specification)
 public protocol SBDObjNamedListControlPublicDelegate: SBDObjControlPublicDelegate {
     
-#if swift(>=5.5)
     /// List key (ID) type alias
     associatedtype ItemsListKeyType: Hashable, Sendable
     /// List type alias
     associatedtype ItemsListType: Sendable, SBDNamedListDelegate
-#else
-    /// List key (ID) type alias
-    associatedtype ItemsListKeyType: Hashable
-    /// List type alias
-    associatedtype ItemsListType: SBDNamedListDelegate
-#endif
     
     /// New lists added to collection event
     var itemListsAddEvent: Notification.Name {get}

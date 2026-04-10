@@ -129,6 +129,7 @@ struct StrategyTestResultView: View {
                             DomainTestResultView(domain: domainTestResult.domain, successRequestsCount: UInt8(domainTestResult.successRequestsCount), totalRequestsCount: UInt8(domainTestResult.totalRequestsCount))
                             Divider()
                         }
+                        .id(domainTestResult.domain)
                     }
                 }
                 .transition(.opacity)
@@ -140,6 +141,7 @@ struct StrategyTestResultView: View {
                         DomainTestResultView(domain: domainTestResult.domain, successRequestsCount: UInt8(domainTestResult.successRequestsCount), totalRequestsCount: UInt8(domainTestResult.totalRequestsCount))
                         Divider()
                     }
+                    .id(domainTestResult.domain)
                 }
             }, label: {
                 if (_expanded) {

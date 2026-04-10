@@ -1,7 +1,7 @@
 import Foundation
 
 /// Abstract cancellation token
-public struct CancellationToken {
+public struct CancellationToken: Sendable {
     
     /// Cancellation requested for the token flag
     private var cancelled: Bool
@@ -49,7 +49,7 @@ public final class CancellationTokenSource {
 }
 
 /// Thread-safe cancellation token source
-public final class ConcurrentCancellationTokenSource {
+public final class ConcurrentCancellationTokenSource: @unchecked Sendable {
 
     /// Cancellation token
     fileprivate var token: CancellationToken
@@ -77,8 +77,3 @@ public final class ConcurrentCancellationTokenSource {
         }
     }
 }
-
-#if swift(>=5.5)
-extension CancellationToken: Sendable {}
-extension ConcurrentCancellationTokenSource: @unchecked Sendable {}
-#endif

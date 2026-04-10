@@ -7,7 +7,6 @@
 
 import Foundation
 
-#if swift(>=5.5)
 /// Named object list protocol
 public protocol SBDNamedListDelegate: Sendable {
     
@@ -23,23 +22,6 @@ public protocol SBDNamedListDelegate: Sendable {
     /// Items list raw
     var rawItems: [String] {get}
 }
-#else
-/// Named object list protocol
-public protocol SBDNamedListDelegate {
-    
-    /// List item type alias
-    associatedtype ListItemType: Hashable
-    
-    /// List ID
-    var id: String {get}
-    /// List 'human' name
-    var name: String {get}
-    /// Items list
-    var items: Set<ListItemType> {get}
-    /// Items list raw
-    var rawItems: [String] {get}
-}
-#endif
 
 public extension SBDNamedListDelegate {
     

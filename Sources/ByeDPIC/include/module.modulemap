@@ -1,0 +1,11 @@
+//
+//  module.modulemap
+//  SwByeDPI
+//
+//  Created by developer on 09.04.2026.
+//
+
+module ByeDPIC {
+    header "ByeDPIC.h"
+    export *
+}

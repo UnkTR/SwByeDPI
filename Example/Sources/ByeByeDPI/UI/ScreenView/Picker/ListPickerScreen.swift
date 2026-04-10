@@ -52,6 +52,7 @@ struct ListPickerScreen<T: SBDNamedListDelegate>: View {
                             })) { list, newVal in
                                 // no need to update - already done in binding 'set'
                             }
+                            .id(list.id)
                         }
                         Rectangle()
                             .frame(width: 1, height: Constants.buttonMinHeight)

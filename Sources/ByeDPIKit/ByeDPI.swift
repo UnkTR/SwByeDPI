@@ -6,7 +6,11 @@
 //
 
 import Foundation
+#if canImport(ByeDPIC)
 import ByeDPIC
+#elseif canImport(ByeDPICLib)
+import ByeDPICLib
+#endif
 
 /// ByeDPI Swift wrapper
 open class ByeDPI {

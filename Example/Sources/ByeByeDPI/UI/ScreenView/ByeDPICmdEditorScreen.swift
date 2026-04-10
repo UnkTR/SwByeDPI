@@ -31,6 +31,7 @@ struct ByeDPICmdEditorScreen: View {
                 LazyVStack(alignment: .leading, spacing: 8.0) {
                     ForEach(properties.byeDPICmdEditorHistory, id: \.self) { cmdLine in
                         RecentByeDPICmdView(line: cmdLine)
+                            .id(cmdLine)
                     }
                     Rectangle()
                         .frame(width: 1.0, height: 12.0)

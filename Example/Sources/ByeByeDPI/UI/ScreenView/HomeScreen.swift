@@ -6,7 +6,11 @@
 //
 
 import SwiftUI
+#if canImport(ByeDPIKit)
 import ByeDPIKit
+#elseif canImport(ByeDPIKitLib)
+import ByeDPIKitLib
+#endif
 import SwByeDPI
 
 struct HomeScreen: View {

@@ -6,7 +6,7 @@
 //
 
 /// Domain with strategy link (Testing purposes)
-public final class SBDDomainStrategyLink {
+public final class SBDDomainStrategyLink: Sendable {
     
     /// Strategy ID
     public let strategyID: Int
@@ -26,7 +26,3 @@ public final class SBDDomainStrategyLink {
     }
     
 }
-
-#if swift(>=5.5)
-extension SBDDomainStrategyLink: Sendable {}
-#endif

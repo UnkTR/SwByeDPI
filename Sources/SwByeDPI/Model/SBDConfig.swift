@@ -8,7 +8,7 @@
 import Foundation
 
 /// ByeDPI launch configuration
-public final class SBDConfig: Codable, Cloneable {
+public final class SBDConfig: Codable, Sendable, Cloneable {
     
     /// ByeDPI SOCKS proxy default listen IP address - 127.0.0.1 (localhost)
     public static let defaultListenIP = "127.0.0.1"
@@ -25,7 +25,7 @@ public final class SBDConfig: Codable, Cloneable {
     static let cmdValidateSet: Set<String> = ["-i", "--ip", "-p", "--port", "-b", "--bufSize", "-c", "--max-conn", "-g", "--def-ttl", "-x", "--debug"]
     static let cmdWithoutParamValidateSet: Set<String> = ["-N", "--no-domain", "-U", "--no-udp"]
 #if targetEnvironment(simulator) || targetEnvironment(macCatalyst) || os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || os(visionOS)
-    static let appleCmdWithParamRestrictedSet: Set<String> = ["-T", "--timeout", "-n", "--fake-sni"]
+    static let appleCmdWithParamRestrictedSet: Set<String> = ["-T", "--timeout", "-f", "--fake", "-n", "--fake-sni"]
     static let appleCmdWithoutParamRestrictedSet: Set<String> = ["-Y", "--drop-sack", "-S", "--md5sig", "-E", "--transparent", "-F", "--tfo"]
 #endif
     
@@ -157,6 +157,7 @@ public final class SBDConfig: Codable, Cloneable {
             }
             #if targetEnvironment(simulator) || targetEnvironment(macCatalyst) || os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || os(visionOS)
             if (appleCmdWithParamRestrictedSet.contains(t)) {
+                //Separated param key & value. Example: "-f -1" or "-T 3"
                 // Skip option and the next value if present.
                 i += 2
                 continue
@@ -165,12 +166,10 @@ public final class SBDConfig: Codable, Cloneable {
                 i += 1
                 continue
             }
-            if (t.hasPrefix("-f")) {
+            
+            if (t.hasPrefix("-f") || t.hasPrefix("-T")) {
+                //Unified param key & value. Example: "-f-1" or "-T3" -> Skip 1 arg
                 i += 1
-                continue
-            }
-            if (t.hasPrefix("--fake")) {
-                i += 2
                 continue
             }
             #endif
@@ -181,7 +180,3 @@ public final class SBDConfig: Codable, Cloneable {
         return out
     }
 }
-
-#if swift(>=5.5)
-extension SBDConfig: Sendable {}
-#endif

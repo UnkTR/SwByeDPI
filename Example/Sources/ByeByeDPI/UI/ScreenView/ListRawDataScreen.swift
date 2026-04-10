@@ -28,14 +28,16 @@ struct ListRawDataScreen: View {
                 ScrollView(.vertical) {
                     LazyVStack(alignment: .center, spacing: 8.0) {
                         ForEach(0..<_rawDataLines.count, id: \.self) { index in
+                            let line = _rawDataLines[index]
                             VStack(alignment: .leading, spacing: 8.0) {
                                 HStack(alignment: .top, spacing: 4.0) {
                                     Text("•")
-                                    Text(_rawDataLines[index])
+                                    Text(line)
                                 }
                                 Divider()
                                     .padding(EdgeInsets(top: .zero, leading: 12.0, bottom: .zero, trailing: .zero))
                             }
+                            .id(line)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         Rectangle()

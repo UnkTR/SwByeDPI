@@ -8,7 +8,7 @@
 import Foundation
 
 /// A reusable DPI-evasion strategy
-public final class SBDStrategy: Hashable, Codable, CustomStringConvertible {
+public final class SBDStrategy: Hashable, Sendable, Codable, CustomStringConvertible {
     
     fileprivate static let _autoShortArgKey = "-A"
     fileprivate static let _autoFullArgKey = "--auto"
@@ -355,7 +355,3 @@ public final class SBDStrategy: Hashable, Codable, CustomStringConvertible {
         return cmdArgs
     }
 }
-
-#if swift(>=5.5)
-extension SBDStrategy: Sendable {}
-#endif

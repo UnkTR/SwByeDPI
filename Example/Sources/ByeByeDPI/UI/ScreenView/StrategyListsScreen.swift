@@ -20,7 +20,9 @@ struct StrategyListsScreen: View {
                 ScrollView(.vertical) {
                     LazyVStack(alignment: .leading, spacing: 12.0) {
                         ForEach(0..<manager.lists.count, id: \.self) { index in
-                            StrategyListView(list: manager.lists[index])
+                            let strategy = manager.lists[index]
+                            StrategyListView(list: strategy)
+                                .id(strategy.id)
                         }
                         Rectangle()
                             .frame(width: 1, height: Constants.buttonMinHeight + 12)

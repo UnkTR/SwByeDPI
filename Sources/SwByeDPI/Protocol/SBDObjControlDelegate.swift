@@ -10,13 +10,8 @@ import Foundation
 /// Abstract object control delegate (internal specification)
 protocol SBDObjControlDelegate: AnyObject {
     
-#if swift(>=5.5)
     /// Object type alias
     associatedtype ItemType: Hashable, Sendable
-#else
-    /// Object type alias
-    associatedtype ItemType: Hashable
-#endif
     
     /// New items added to collection event name
     var itemsAddEventPayloadKeyName: String {get}
@@ -40,13 +35,8 @@ protocol SBDObjControlDelegate: AnyObject {
 /// Abstract object control delegate (public specification)
 public protocol SBDObjControlPublicDelegate: AnyObject {
     
-#if swift(>=5.5)
     /// Object type alias
     associatedtype ItemType: Hashable, Sendable
-#else
-    /// Object type alias
-    associatedtype ItemType: Hashable
-#endif
     
     /// New items added to collection event
     var itemsAddEvent: Notification.Name {get}

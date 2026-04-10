@@ -8,7 +8,7 @@
 import Foundation
 
 /// ByeByeDPI (Android) config iOS adapter
-public final class SBDByeDPIAndroidConfig: Decodable {
+public final class SBDByeDPIAndroidConfig: Decodable, Sendable {
     
     private enum CodingKeys: String, CodingKey {
         case app
@@ -89,7 +89,7 @@ public final class SBDByeDPIAndroidConfig: Decodable {
     }
 }
 
-fileprivate final class SBDAndroidByeDPIHistory: Decodable {
+fileprivate final class SBDAndroidByeDPIHistory: Decodable, Sendable {
     
     private enum CodingKeys: String, CodingKey {
         case pinned
@@ -264,9 +264,3 @@ fileprivate final class SBDAndroidByeDPISettings: Decodable {
         return res
     }
 }
-
-#if swift(>=5.5)
-extension SBDByeDPIAndroidConfig: Sendable {}
-extension SBDAndroidByeDPIHistory: Sendable {}
-extension SBDAndroidByeDPISettings: Sendable {}
-#endif

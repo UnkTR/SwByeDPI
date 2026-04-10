@@ -8,7 +8,7 @@
 import Foundation
 
 /// DPI-evasion strategy test result
-public final class SBDStrategyTestResult: Codable, Cloneable {
+public final class SBDStrategyTestResult: Codable, Sendable, Cloneable {
     
     /// DPI-evasion strategy
     public let strategy: SBDStrategy
@@ -200,7 +200,3 @@ public final class SBDStrategyTestResult: Codable, Cloneable {
     }
     
 }
-
-#if swift(>=5.5)
-extension SBDStrategyTestResult: Sendable {}
-#endif

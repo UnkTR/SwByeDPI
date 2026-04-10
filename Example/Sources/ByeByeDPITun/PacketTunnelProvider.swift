@@ -9,7 +9,11 @@ import CoreFoundation
 import SystemConfiguration
 import NetworkExtension
 import Tun2SocksKit
+#if canImport(ByeDPIKit)
 import ByeDPIKit
+#elseif canImport(ByeDPIKitLib)
+import ByeDPIKitLib
+#endif
 //import OSLog
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
@@ -210,8 +214,8 @@ misc:
         ]
         ipv4Settings.excludedRoutes = [
             NEIPv4Route(destinationAddress: socksListenIp, subnetMask: "255.255.255.255"),
-            NEIPv4Route(destinationAddress: "192.168.0.1", subnetMask: "255.255.0.0"),
-            NEIPv4Route(destinationAddress: "172.16.0.1", subnetMask: "255.240.0.0"),
+            NEIPv4Route(destinationAddress: "192.168.0.0", subnetMask: "255.255.0.0"),
+            NEIPv4Route(destinationAddress: "172.16.0.0", subnetMask: "255.240.0.0"),
             
             // Google DNS
             NEIPv4Route(destinationAddress: "8.8.8.8", subnetMask: "255.255.255.255"),
@@ -225,6 +229,9 @@ misc:
             // Comss DNS
             NEIPv4Route(destinationAddress: "83.220.169.155", subnetMask: "255.255.255.255"),
             NEIPv4Route(destinationAddress: "195.133.25.16", subnetMask: "255.255.255.255"),
+            // Adguard DNS
+            NEIPv4Route(destinationAddress: "94.140.14.14", subnetMask: "255.255.255.255"),
+            NEIPv4Route(destinationAddress: "94.140.14.15", subnetMask: "255.255.255.255"),
         ]
         tunnelSettings.ipv4Settings = ipv4Settings
     

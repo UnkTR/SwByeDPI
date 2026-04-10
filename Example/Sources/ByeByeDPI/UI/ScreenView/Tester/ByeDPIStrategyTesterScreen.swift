@@ -69,6 +69,7 @@ struct ByeDPIStrategyTesterScreen: View {
                         StrategyTestResultView(strategyCmdArgs: strategyTestResult.strategy.cmdArgs, totalDomainRequestsCount: _totalDomainRequestsCount, domainsSuccessTestResults: strategyTestResult.sortedDomainsTestsResult.map({ domainTestResult in
                             return (domain: domainTestResult.domain, successRequestsCount: domainTestResult.successRequestsCount, failRequestsCount: domainTestResult.failedRequestsCount)
                         }))
+                        .id(strategyTestResult.strategy.id)
                     }
                     .padding(.horizontal, 12)
                 }

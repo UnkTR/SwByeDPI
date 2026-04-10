@@ -1,6 +1,6 @@
 import AppIntents
 import NetworkExtension
-import ByeDPIKit
+import SwByeDPI
 
 @available(macOS 13.0, iOS 16.0, tvOS 17.0, *)
 ///Start network extension VPN (ByeDPI SOCKS to TUN) shortcut

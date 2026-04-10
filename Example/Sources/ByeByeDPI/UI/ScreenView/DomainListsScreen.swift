@@ -20,7 +20,9 @@ struct DomainListsScreen: View {
                 ScrollView(.vertical) {
                     LazyVStack(alignment: .leading, spacing: 12.0) {
                         ForEach(0..<manager.lists.count, id: \.self) { index in
-                            DomainListView(list: manager.lists[index])
+                            let list = manager.lists[index]
+                            DomainListView(list: list)
+                                .id(list.id)
                         }
                         Rectangle()
                             .frame(width: 1, height: Constants.buttonMinHeight + 12)

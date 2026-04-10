@@ -9,32 +9,24 @@
 /* Begin PBXBuildFile section */
 		8B09F8692F7A672E0065FB4D /* ByeByeDPITun.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8BB4205C2F73FEE6005C2F2B /* ByeByeDPITun.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B2BF7B92F4DFB9D0016A26B /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2BF7B82F4DFB9D0016A26B /* RswiftLibrary */; };
-		8B3AF5782F6DCEDE0085E8BC /* ByeDPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; };
-		8B3AF5792F6DCEDE0085E8BC /* ByeDPIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B3AF57C2F6DCEDE0085E8BC /* SwByeDPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD891882F3A1A750020D925 /* SwByeDPI.framework */; };
 		8B3AF57D2F6DCEDE0085E8BC /* SwByeDPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD891882F3A1A750020D925 /* SwByeDPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B3AF5822F6DCEE80085E8BC /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 8B3AF5812F6DCEE80085E8BC /* RswiftLibrary */; };
 		8B3AF5842F6DCEEF0085E8BC /* TextFieldAlert in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, tvos, ); productRef = 8B3AF5832F6DCEEF0085E8BC /* TextFieldAlert */; };
 		8B3B63EB2F597F94005BA55B /* TextFieldAlert in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, tvos, ); productRef = 8B3B63EA2F597F94005BA55B /* TextFieldAlert */; };
-		8BA5E1C82F7108D700F47B9C /* ByeDPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; };
+		8B62D5C22F87FB3300DF6F8C /* libByeDPICLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B62D5A42F87ECAB00DF6F8C /* libByeDPICLib.a */; };
+		8B62D5C52F87FCF600DF6F8C /* libByeDPICLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B62D5A42F87ECAB00DF6F8C /* libByeDPICLib.a */; };
+		8B62D5CB2F880A0A00DF6F8C /* libByeDPIKitLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B62D5BB2F87FA9500DF6F8C /* libByeDPIKitLib.a */; };
+		8B62D5DE2F88186300DF6F8C /* libByeDPIKitLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B62D5BB2F87FA9500DF6F8C /* libByeDPIKitLib.a */; };
 		8BA5E1C92F7108D700F47B9C /* SwByeDPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD891882F3A1A750020D925 /* SwByeDPI.framework */; };
 		8BA5E1CA2F7108D700F47B9C /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 8BA5E1C22F7108D700F47B9C /* RswiftLibrary */; };
-		8BA5E1CE2F7108D700F47B9C /* ByeDPIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8BA5E1CF2F7108D700F47B9C /* SwByeDPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD891882F3A1A750020D925 /* SwByeDPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8BA6AC132F3A706D00999BF6 /* SwByeDPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD891882F3A1A750020D925 /* SwByeDPI.framework */; };
 		8BB4205E2F73FEE6005C2F2B /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB4205D2F73FEE6005C2F2B /* NetworkExtension.framework */; };
 		8BB420742F73FFB1005C2F2B /* Tun2SocksKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BB420732F73FFB1005C2F2B /* Tun2SocksKit */; };
-		8BB420752F73FFCE005C2F2B /* ByeDPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; };
-		8BB420762F73FFCE005C2F2B /* ByeDPIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8BBA5FAC2F67D3B40092E52A /* ByeDPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; };
-		8BBA5FCD2F67D5610092E52A /* ByeDPIC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8F7A142F4799180015A52A /* ByeDPIC.framework */; };
-		8BBA5FCE2F67D5610092E52A /* ByeDPIC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8F7A142F4799180015A52A /* ByeDPIC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8BBA638B2F6835F40092E52A /* SwByeDPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD891882F3A1A750020D925 /* SwByeDPI.framework */; };
 		8BBA638C2F6835F40092E52A /* SwByeDPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD891882F3A1A750020D925 /* SwByeDPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8BBA65712F6842A90092E52A /* ByeDPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; };
-		8BBA65722F6842A90092E52A /* ByeDPIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8BBA65762F6846460092E52A /* ByeDPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; };
-		8BBA65772F6846460092E52A /* ByeDPIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBA5FA42F67D3B30092E52A /* ByeDPIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,13 +37,6 @@
 			remoteGlobalIDString = 8BB4205B2F73FEE6005C2F2B;
 			remoteInfo = ByeByeDPITun;
 		};
-		8B3AF56F2F6DCDF50085E8BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8BBA5FA32F67D3B30092E52A;
-			remoteInfo = ByeDPIKit;
-		};
 		8B3AF5712F6DCDF50085E8BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
@@ -59,12 +44,33 @@
 			remoteGlobalIDString = 8BD891872F3A1A750020D925;
 			remoteInfo = SwByeDPI;
 		};
-		8BA5E1BE2F7108D700F47B9C /* PBXContainerItemProxy */ = {
+		8B62D5C32F87FB3300DF6F8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8BBA5FA32F67D3B30092E52A;
-			remoteInfo = ByeDPIKit;
+			remoteGlobalIDString = 8B62D5A32F87ECAB00DF6F8C;
+			remoteInfo = LibByeDPIC;
+		};
+		8B62D5C62F87FCF600DF6F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B62D5A32F87ECAB00DF6F8C;
+			remoteInfo = ByeDPICLib;
+		};
+		8B62D5CC2F880A0A00DF6F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B62D5BA2F87FA9500DF6F8C;
+			remoteInfo = ByeDPIKitLib;
+		};
+		8B62D5DF2F88186300DF6F8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B62D5BA2F87FA9500DF6F8C;
+			remoteInfo = ByeDPIKitLib;
 		};
 		8BA5E1C02F7108D700F47B9C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -80,13 +86,6 @@
 			remoteGlobalIDString = 8BD891872F3A1A750020D925;
 			remoteInfo = SwByeDPI;
 		};
-		8BB420772F73FFCE005C2F2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8BBA5FA32F67D3B30092E52A;
-			remoteInfo = ByeDPIKit;
-		};
 		8BBA5FAD2F67D3B40092E52A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
@@ -94,33 +93,12 @@
 			remoteGlobalIDString = 8BBA5FA32F67D3B30092E52A;
 			remoteInfo = ByeDPIKit;
 		};
-		8BBA5FCF2F67D5610092E52A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8B8F7A132F4799180015A52A;
-			remoteInfo = ByeDPIC;
-		};
 		8BBA638D2F6835F40092E52A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8BD891872F3A1A750020D925;
 			remoteInfo = SwByeDPI;
-		};
-		8BBA65732F6842A90092E52A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8BBA5FA32F67D3B30092E52A;
-			remoteInfo = ByeDPIKit;
-		};
-		8BBA65782F6846460092E52A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BD8917F2F3A1A750020D925 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8BBA5FA32F67D3B30092E52A;
-			remoteInfo = ByeDPIKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -131,10 +109,27 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8B3AF5792F6DCEDE0085E8BC /* ByeDPIKit.framework in Embed Frameworks */,
 				8B3AF57D2F6DCEDE0085E8BC /* SwByeDPI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B62D5A22F87ECAB00DF6F8C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B62D5B92F87FA9500DF6F8C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8B7688982F752DDD00234751 /* Embed Foundation Extensions */ = {
@@ -154,30 +149,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8BA5E1CE2F7108D700F47B9C /* ByeDPIKit.framework in Embed Frameworks */,
 				8BA5E1CF2F7108D700F47B9C /* SwByeDPI.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BB420792F73FFCE005C2F2B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8BB420762F73FFCE005C2F2B /* ByeDPIKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BBA5FD12F67D5610092E52A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8BBA5FCE2F67D5610092E52A /* ByeDPIC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,19 +160,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8BBA65722F6842A90092E52A /* ByeDPIKit.framework in Embed Frameworks */,
 				8BBA638C2F6835F40092E52A /* SwByeDPI.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BBA657A2F6846460092E52A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8BBA65772F6846460092E52A /* ByeDPIKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +175,8 @@
 		8B46A3052F69D77D00B70C6E /* Package@swift-5.3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Package@swift-5.3.swift"; sourceTree = "<group>"; };
 		8B46A3062F69D77D00B70C6E /* Package@swift-5.9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Package@swift-5.9.swift"; sourceTree = "<group>"; };
 		8B46A3072F69D77D00B70C6E /* Package@swift-5.10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Package@swift-5.10.swift"; sourceTree = "<group>"; };
+		8B62D5A42F87ECAB00DF6F8C /* libByeDPICLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libByeDPICLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B62D5BB2F87FA9500DF6F8C /* libByeDPIKitLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libByeDPIKitLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B707C052F7D7E9800074C5A /* update_byedpi.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = update_byedpi.sh; sourceTree = "<group>"; };
 		8B7688822F752DDB00234751 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8B8F7A142F4799180015A52A /* ByeDPIC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ByeDPIC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,6 +347,39 @@
 			};
 			target = 8B3AF55D2F6DCCCF0085E8BC /* ByeDPI */;
 		};
+		8B62D5AF2F87F90000DF6F8C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ByeDPIC/byedpi/ciadpi_main.c,
+				ByeDPIC/byedpi/conev.c,
+				ByeDPIC/byedpi/conev.h,
+				ByeDPIC/byedpi/desync.c,
+				ByeDPIC/byedpi/desync.h,
+				ByeDPIC/byedpi/error.h,
+				ByeDPIC/byedpi/extend.c,
+				ByeDPIC/byedpi/extend.h,
+				ByeDPIC/byedpi/kavl.h,
+				ByeDPIC/byedpi/mpool.c,
+				ByeDPIC/byedpi/mpool.h,
+				ByeDPIC/byedpi/packets.c,
+				ByeDPIC/byedpi/packets.h,
+				ByeDPIC/byedpi/params.h,
+				ByeDPIC/byedpi/proxy.c,
+				ByeDPIC/byedpi/proxy.h,
+				ByeDPIC/ciadpi_bridge.c,
+				ByeDPIC/ciadpi_bridge.h,
+				ByeDPIC/include/ByeDPIC.h,
+			);
+			target = 8B62D5A32F87ECAB00DF6F8C /* ByeDPICLib */;
+		};
+		8B62D5C92F87FD1D00DF6F8C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ByeDPIKit/ByeDPI.swift,
+				ByeDPIKit/Model/BDError.swift,
+			);
+			target = 8B62D5BA2F87FA9500DF6F8C /* ByeDPIKitLib */;
+		};
 		8B8F7A1F2F47996A0015A52A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -525,27 +520,15 @@
 				ByeDPIC/byedpi/.gitignore,
 				ByeDPIC/byedpi/ciadpi_main.c,
 				ByeDPIC/byedpi/conev.c,
-				ByeDPIC/byedpi/conev.h,
 				ByeDPIC/byedpi/desync.c,
-				ByeDPIC/byedpi/desync.h,
-				ByeDPIC/byedpi/error.h,
 				ByeDPIC/byedpi/extend.c,
-				ByeDPIC/byedpi/extend.h,
-				ByeDPIC/byedpi/kavl.h,
 				ByeDPIC/byedpi/LICENSE,
 				ByeDPIC/byedpi/mpool.c,
-				ByeDPIC/byedpi/mpool.h,
 				ByeDPIC/byedpi/packets.c,
-				ByeDPIC/byedpi/packets.h,
-				ByeDPIC/byedpi/params.h,
 				ByeDPIC/byedpi/proxy.c,
-				ByeDPIC/byedpi/proxy.h,
 				ByeDPIC/byedpi/win_service.c,
-				ByeDPIC/byedpi/win_service.h,
 				ByeDPIC/ciadpi_bridge.c,
-				ByeDPIC/ciadpi_bridge.h,
 				"ByeDPIC/commit-id",
-				ByeDPIC/include/ByeDPIC.h,
 				ByeDPIC/PrivacyInfo.xcprivacy,
 				ByeDPIKit/ByeDPI.swift,
 				ByeDPIKit/Model/BDError.swift,
@@ -562,7 +545,7 @@
 		8B3B633E2F595401005BA55B /* Experimental */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Experimental; sourceTree = "<group>"; };
 		8BA5E6912F713A1000F47B9C /* RepoAssets */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = RepoAssets; sourceTree = "<group>"; };
 		8BA6AB9A2F3A6F9500999BF6 /* Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8BBA5FCA2F67D5150092E52A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8BA6AC1C2F3A708F00999BF6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Tests; sourceTree = "<group>"; };
-		8BD891932F3A1A860020D925 /* Sources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8B8F7A1F2F47996A0015A52A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8BBA656C2F6841F20092E52A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8BD891982F3A1B730020D925 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Sources; sourceTree = "<group>"; };
+		8BD891932F3A1A860020D925 /* Sources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8B62D5AF2F87F90000DF6F8C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8B8F7A1F2F47996A0015A52A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8B62D5C92F87FD1D00DF6F8C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8BBA656C2F6841F20092E52A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8BD891982F3A1B730020D925 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Sources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -570,7 +553,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BBA65712F6842A90092E52A /* ByeDPIKit.framework in Frameworks */,
 				8BBA638B2F6835F40092E52A /* SwByeDPI.framework in Frameworks */,
 				8B2BF7B92F4DFB9D0016A26B /* RswiftLibrary in Frameworks */,
 				8B3B63EB2F597F94005BA55B /* TextFieldAlert in Frameworks */,
@@ -581,10 +563,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B3AF5782F6DCEDE0085E8BC /* ByeDPIKit.framework in Frameworks */,
 				8B3AF57C2F6DCEDE0085E8BC /* SwByeDPI.framework in Frameworks */,
 				8B3AF5822F6DCEE80085E8BC /* RswiftLibrary in Frameworks */,
 				8B3AF5842F6DCEEF0085E8BC /* TextFieldAlert in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B62D5A12F87ECAB00DF6F8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B62D5B82F87FA9500DF6F8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B62D5C52F87FCF600DF6F8C /* libByeDPICLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,7 +595,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BA5E1C82F7108D700F47B9C /* ByeDPIKit.framework in Frameworks */,
 				8BA5E1C92F7108D700F47B9C /* SwByeDPI.framework in Frameworks */,
 				8BA5E1CA2F7108D700F47B9C /* RswiftLibrary in Frameworks */,
 			);
@@ -619,7 +614,7 @@
 			files = (
 				8BB420742F73FFB1005C2F2B /* Tun2SocksKit in Frameworks */,
 				8BB4205E2F73FEE6005C2F2B /* NetworkExtension.framework in Frameworks */,
-				8BB420752F73FFCE005C2F2B /* ByeDPIKit.framework in Frameworks */,
+				8B62D5DE2F88186300DF6F8C /* libByeDPIKitLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +622,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BBA5FCD2F67D5610092E52A /* ByeDPIC.framework in Frameworks */,
+				8B62D5C22F87FB3300DF6F8C /* libByeDPICLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,7 +638,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BBA65762F6846460092E52A /* ByeDPIKit.framework in Frameworks */,
+				8B62D5CB2F880A0A00DF6F8C /* libByeDPIKitLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +695,8 @@
 				8B3AF55E2F6DCCCF0085E8BC /* ByeDPI.app */,
 				8BA5E1D32F7108D700F47B9C /* ByeDPImacOS.app */,
 				8BB4205C2F73FEE6005C2F2B /* ByeByeDPITun.appex */,
+				8B62D5A42F87ECAB00DF6F8C /* libByeDPICLib.a */,
+				8B62D5BB2F87FA9500DF6F8C /* libByeDPIKitLib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -707,21 +704,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		8B62D5CE2F880D1700DF6F8C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B8F7A0F2F4799180015A52A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BBA5F9F2F67D3B30092E52A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BD891832F3A1A750020D925 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -746,7 +736,6 @@
 			dependencies = (
 				8B52DB1F2F62A683009BE7C3 /* PBXTargetDependency */,
 				8BBA638E2F6835F40092E52A /* PBXTargetDependency */,
-				8BBA65742F6842A90092E52A /* PBXTargetDependency */,
 				8B09F86B2F7A672E0065FB4D /* PBXTargetDependency */,
 			);
 			name = ByeByeDPI;
@@ -770,7 +759,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8B3AF5702F6DCDF50085E8BC /* PBXTargetDependency */,
 				8B3AF5722F6DCDF50085E8BC /* PBXTargetDependency */,
 				8B3AF56E2F6DCDEB0085E8BC /* PBXTargetDependency */,
 			);
@@ -782,6 +770,46 @@
 			productName = ByeByeDPIProxy;
 			productReference = 8B3AF55E2F6DCCCF0085E8BC /* ByeDPI.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8B62D5A32F87ECAB00DF6F8C /* ByeDPICLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B62D5AB2F87ECAB00DF6F8C /* Build configuration list for PBXNativeTarget "ByeDPICLib" */;
+			buildPhases = (
+				8B62D5CE2F880D1700DF6F8C /* Headers */,
+				8B62D5A02F87ECAB00DF6F8C /* Sources */,
+				8B62D5A12F87ECAB00DF6F8C /* Frameworks */,
+				8B62D5A22F87ECAB00DF6F8C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ByeDPICLib;
+			packageProductDependencies = (
+			);
+			productName = ByeDPICC;
+			productReference = 8B62D5A42F87ECAB00DF6F8C /* libByeDPICLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8B62D5BA2F87FA9500DF6F8C /* ByeDPIKitLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B62D5BF2F87FA9500DF6F8C /* Build configuration list for PBXNativeTarget "ByeDPIKitLib" */;
+			buildPhases = (
+				8B62D5B72F87FA9500DF6F8C /* Sources */,
+				8B62D5B82F87FA9500DF6F8C /* Frameworks */,
+				8B62D5B92F87FA9500DF6F8C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B62D5C72F87FCF600DF6F8C /* PBXTargetDependency */,
+			);
+			name = ByeDPIKitLib;
+			packageProductDependencies = (
+			);
+			productName = LibByeDPIKit;
+			productReference = 8B62D5BB2F87FA9500DF6F8C /* libByeDPIKitLib.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		8B8F7A132F4799180015A52A /* ByeDPIC */ = {
 			isa = PBXNativeTarget;
@@ -815,7 +843,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8BA5E1BD2F7108D700F47B9C /* PBXTargetDependency */,
 				8BA5E1BF2F7108D700F47B9C /* PBXTargetDependency */,
 				8BA5E1C12F7108D700F47B9C /* PBXTargetDependency */,
 			);
@@ -854,12 +881,11 @@
 				8BB420582F73FEE6005C2F2B /* Sources */,
 				8BB420592F73FEE6005C2F2B /* Frameworks */,
 				8BB4205A2F73FEE6005C2F2B /* Resources */,
-				8BB420792F73FFCE005C2F2B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8BB420782F73FFCE005C2F2B /* PBXTargetDependency */,
+				8B62D5E02F88186300DF6F8C /* PBXTargetDependency */,
 			);
 			name = ByeByeDPITun;
 			packageProductDependencies = (
@@ -873,16 +899,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BBA5FB42F67D3B40092E52A /* Build configuration list for PBXNativeTarget "ByeDPIKit" */;
 			buildPhases = (
-				8BBA5F9F2F67D3B30092E52A /* Headers */,
 				8BBA5FA02F67D3B30092E52A /* Sources */,
 				8BBA5FA12F67D3B30092E52A /* Frameworks */,
 				8BBA5FA22F67D3B30092E52A /* Resources */,
-				8BBA5FD12F67D5610092E52A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8BBA5FD02F67D5610092E52A /* PBXTargetDependency */,
+				8B62D5C42F87FB3300DF6F8C /* PBXTargetDependency */,
 			);
 			name = ByeDPIKit;
 			packageProductDependencies = (
@@ -915,16 +939,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BD8918E2F3A1A750020D925 /* Build configuration list for PBXNativeTarget "SwByeDPI" */;
 			buildPhases = (
-				8BD891832F3A1A750020D925 /* Headers */,
 				8BD891842F3A1A750020D925 /* Sources */,
 				8BD891852F3A1A750020D925 /* Frameworks */,
 				8BD891862F3A1A750020D925 /* Resources */,
-				8BBA657A2F6846460092E52A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8BBA65792F6846460092E52A /* PBXTargetDependency */,
+				8B62D5CD2F880A0A00DF6F8C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8BD891932F3A1A860020D925 /* Sources */,
@@ -950,6 +972,12 @@
 						CreatedOnToolsVersion = 16.2;
 					};
 					8B3AF55D2F6DCCCF0085E8BC = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					8B62D5A32F87ECAB00DF6F8C = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					8B62D5BA2F87FA9500DF6F8C = {
 						CreatedOnToolsVersion = 16.2;
 					};
 					8B8F7A132F4799180015A52A = {
@@ -996,7 +1024,9 @@
 				8BB4205B2F73FEE6005C2F2B /* ByeByeDPITun */,
 				8B3AF55D2F6DCCCF0085E8BC /* ByeDPI */,
 				8BA5E1BC2F7108D700F47B9C /* ByeDPImacOS */,
+				8B62D5A32F87ECAB00DF6F8C /* ByeDPICLib */,
 				8B8F7A132F4799180015A52A /* ByeDPIC */,
+				8B62D5BA2F87FA9500DF6F8C /* ByeDPIKitLib */,
 				8BBA5FA32F67D3B30092E52A /* ByeDPIKit */,
 				8BD891872F3A1A750020D925 /* SwByeDPI */,
 				8BBA5FAA2F67D3B40092E52A /* ByeDPIKitTests */,
@@ -1086,6 +1116,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8B62D5A02F87ECAB00DF6F8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B62D5B72F87FA9500DF6F8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B8F7A102F4799180015A52A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1147,11 +1191,6 @@
 			isa = PBXTargetDependency;
 			productRef = 8B3AF56D2F6DCDEB0085E8BC /* RswiftGenerateInternalResources */;
 		};
-		8B3AF5702F6DCDF50085E8BC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8BBA5FA32F67D3B30092E52A /* ByeDPIKit */;
-			targetProxy = 8B3AF56F2F6DCDF50085E8BC /* PBXContainerItemProxy */;
-		};
 		8B3AF5722F6DCDF50085E8BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8BD891872F3A1A750020D925 /* SwByeDPI */;
@@ -1161,10 +1200,25 @@
 			isa = PBXTargetDependency;
 			productRef = 8B52DB1E2F62A683009BE7C3 /* RswiftGenerateInternalResources */;
 		};
-		8BA5E1BD2F7108D700F47B9C /* PBXTargetDependency */ = {
+		8B62D5C42F87FB3300DF6F8C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8BBA5FA32F67D3B30092E52A /* ByeDPIKit */;
-			targetProxy = 8BA5E1BE2F7108D700F47B9C /* PBXContainerItemProxy */;
+			target = 8B62D5A32F87ECAB00DF6F8C /* ByeDPICLib */;
+			targetProxy = 8B62D5C32F87FB3300DF6F8C /* PBXContainerItemProxy */;
+		};
+		8B62D5C72F87FCF600DF6F8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B62D5A32F87ECAB00DF6F8C /* ByeDPICLib */;
+			targetProxy = 8B62D5C62F87FCF600DF6F8C /* PBXContainerItemProxy */;
+		};
+		8B62D5CD2F880A0A00DF6F8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B62D5BA2F87FA9500DF6F8C /* ByeDPIKitLib */;
+			targetProxy = 8B62D5CC2F880A0A00DF6F8C /* PBXContainerItemProxy */;
+		};
+		8B62D5E02F88186300DF6F8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B62D5BA2F87FA9500DF6F8C /* ByeDPIKitLib */;
+			targetProxy = 8B62D5DF2F88186300DF6F8C /* PBXContainerItemProxy */;
 		};
 		8BA5E1BF2F7108D700F47B9C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1180,35 +1234,15 @@
 			target = 8BD891872F3A1A750020D925 /* SwByeDPI */;
 			targetProxy = 8BA6AC142F3A706D00999BF6 /* PBXContainerItemProxy */;
 		};
-		8BB420782F73FFCE005C2F2B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8BBA5FA32F67D3B30092E52A /* ByeDPIKit */;
-			targetProxy = 8BB420772F73FFCE005C2F2B /* PBXContainerItemProxy */;
-		};
 		8BBA5FAE2F67D3B40092E52A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8BBA5FA32F67D3B30092E52A /* ByeDPIKit */;
 			targetProxy = 8BBA5FAD2F67D3B40092E52A /* PBXContainerItemProxy */;
 		};
-		8BBA5FD02F67D5610092E52A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8B8F7A132F4799180015A52A /* ByeDPIC */;
-			targetProxy = 8BBA5FCF2F67D5610092E52A /* PBXContainerItemProxy */;
-		};
 		8BBA638E2F6835F40092E52A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8BD891872F3A1A750020D925 /* SwByeDPI */;
 			targetProxy = 8BBA638D2F6835F40092E52A /* PBXContainerItemProxy */;
-		};
-		8BBA65742F6842A90092E52A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8BBA5FA32F67D3B30092E52A /* ByeDPIKit */;
-			targetProxy = 8BBA65732F6842A90092E52A /* PBXContainerItemProxy */;
-		};
-		8BBA65792F6846460092E52A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8BBA5FA32F67D3B30092E52A /* ByeDPIKit */;
-			targetProxy = 8BBA65782F6846460092E52A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1221,12 +1255,13 @@
 				CODE_SIGN_ENTITLEMENTS = Example/Sources/ByeByeDPI/ByeByeDPIDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = Example/Sources/ByeByeDPI/PreviewContent/PreviewAssets.xcassets;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 84LBSSY4T8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_FILE = Example/Sources/ByeByeDPI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ByeByeDPI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1257,6 +1292,7 @@
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
@@ -1272,11 +1308,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Example/Sources/ByeByeDPI/ByeByeDPI.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = Example/Sources/ByeByeDPI/PreviewContent/PreviewAssets.xcassets;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_FILE = Example/Sources/ByeByeDPI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ByeByeDPI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1306,6 +1343,7 @@
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
@@ -1321,12 +1359,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Example/Sources/ByeByeDPI/ByeDPI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = Example/Sources/ByeByeDPI/PreviewContent/PreviewAssets.xcassets;
 				DEVELOPMENT_TEAM = KTJ3SX58WK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_FILE = Example/Sources/ByeByeDPI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ByeDPI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1354,6 +1394,7 @@
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
@@ -1369,12 +1410,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Example/Sources/ByeByeDPI/ByeDPI.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = Example/Sources/ByeByeDPI/PreviewContent/PreviewAssets.xcassets;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_FILE = Example/Sources/ByeByeDPI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ByeDPI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1403,11 +1445,140 @@
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+		8B62D5AC2F87ECAB00DF6F8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "${PROJECT_DIR}/Sources/ByeDPIC/include/module.modulemap";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = gnu17;
+				OTHER_CFLAGS = (
+					"-UDAEMON",
+					"-Dmain=ciadpi_main",
+					"-Wno-implicit-function-declaration",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.zeit.byedpi.c;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xrsimulator xros";
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		8B62D5AD2F87ECAB00DF6F8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "${PROJECT_DIR}/Sources/ByeDPIC/include/module.modulemap";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = gnu17;
+				OTHER_CFLAGS = (
+					"-UDAEMON",
+					"-Dmain=ciadpi_main",
+					"-Wno-implicit-function-declaration",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.zeit.byedpi.c;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xrsimulator xros";
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Release;
+		};
+		8B62D5C02F87FA9500DF6F8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = gnu17;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.zeit.byedpi.minimal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_INCLUDE_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		8B62D5C12F87FA9500DF6F8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = gnu17;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.zeit.byedpi.minimal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_INCLUDE_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
@@ -1418,10 +1589,11 @@
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1430,13 +1602,13 @@
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 0.17.3;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -1456,7 +1628,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
-				TVOS_DEPLOYMENT_TARGET = 7.0;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				WATCHOS_DEPLOYMENT_TARGET = 1.0;
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
@@ -1468,10 +1640,11 @@
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1480,13 +1653,13 @@
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 0.17.3;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
@@ -1506,7 +1679,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
-				TVOS_DEPLOYMENT_TARGET = 7.0;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 1.0;
 				XROS_DEPLOYMENT_TARGET = 1.0;
@@ -1519,12 +1692,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Example/Sources/ByeByeDPI/ByeDPI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = Example/Sources/ByeByeDPI/PreviewContent/PreviewAssets.xcassets;
 				DEVELOPMENT_TEAM = KTJ3SX58WK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_FILE = Example/Sources/ByeByeDPI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ByeDPI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1550,6 +1725,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
@@ -1565,12 +1741,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Example/Sources/ByeByeDPI/ByeDPI.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = Example/Sources/ByeByeDPI/PreviewContent/PreviewAssets.xcassets;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_FILE = Example/Sources/ByeByeDPI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ByeDPI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -1597,6 +1774,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
@@ -1610,10 +1788,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
@@ -1625,6 +1805,7 @@
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
@@ -1637,10 +1818,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
@@ -1652,6 +1835,7 @@
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
@@ -1671,6 +1855,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 84LBSSY4T8;
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_FILE = Example/Sources/ByeByeDPITun/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_MODULE_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1689,10 +1874,11 @@
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "test profile NE";
 				REGISTER_APP_GROUPS = NO;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
@@ -1709,6 +1895,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				INFOPLIST_FILE = Example/Sources/ByeByeDPITun/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_MODULE_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1726,10 +1913,11 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = NO;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
@@ -1744,10 +1932,10 @@
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1765,19 +1953,22 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 0.17.3;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = org.zeit.byedpi.minimal;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
@@ -1790,10 +1981,10 @@
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1811,19 +2002,22 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 0.17.3;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = org.zeit.byedpi.minimal;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
@@ -1835,19 +2029,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.zeit.byedpi.minimal.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_INCLUDE_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
@@ -1860,19 +2056,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.zeit.byedpi.minimal.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_INCLUDE_PATHS = "${PROJECT_DIR}/Sources/ByeDPIC/include";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,7";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
@@ -1888,10 +2086,10 @@
 				APPLY_RULES_IN_COPY_HEADERS = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1922,6 +2120,7 @@
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = "$(SWIFT_UPCOMING_FEATURE_6_0)";
@@ -1940,10 +2139,10 @@
 				APPLY_RULES_IN_COPY_HEADERS = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = KTJ3SX58WK;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1974,6 +2173,7 @@
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = "$(SWIFT_UPCOMING_FEATURE_6_0)";
@@ -2039,7 +2239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "ByeDPI will share its feature with local network devices";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2099,7 +2299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "ByeDPI will share its feature with local network devices";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -2126,6 +2326,24 @@
 			buildConfigurations = (
 				8B3AF56A2F6DCCD20085E8BC /* Debug */,
 				8B3AF56B2F6DCCD20085E8BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B62D5AB2F87ECAB00DF6F8C /* Build configuration list for PBXNativeTarget "ByeDPICLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B62D5AC2F87ECAB00DF6F8C /* Debug */,
+				8B62D5AD2F87ECAB00DF6F8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B62D5BF2F87FA9500DF6F8C /* Build configuration list for PBXNativeTarget "ByeDPIKitLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B62D5C02F87FA9500DF6F8C /* Debug */,
+				8B62D5C12F87FA9500DF6F8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

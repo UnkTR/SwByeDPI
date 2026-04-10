@@ -8,7 +8,7 @@
 import Foundation
 
 /// DPI-evasion domain test result
-public final class SBDDomainTestResult: Hashable, Codable, Cloneable  {
+public final class SBDDomainTestResult: Hashable, Sendable, Codable, Cloneable  {
     
     /// Tested domain (Test result ID)
     public let domain: String
@@ -71,7 +71,3 @@ public final class SBDDomainTestResult: Hashable, Codable, Cloneable  {
     }
     
 }
-
-#if swift(>=5.5)
-extension SBDDomainTestResult: Sendable {}
-#endif

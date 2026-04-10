@@ -6,5 +6,10 @@ public final class MAXDPIBypassSLD {
   public static let domainsList = SBDDomainList(name: "MAXDPIBypassSLD", domains: Set<String>([
       "max.ru",
       "oneme.ru",
+      "okcdn.ru",
+      "sferum-dev.ru",
+      "sferum.ru",
+      "juicedev.ru",
+      "gosuslugi.ru",
   ]))
   fileprivate init() {} }

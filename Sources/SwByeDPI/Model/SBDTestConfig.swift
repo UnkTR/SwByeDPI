@@ -8,7 +8,7 @@
 import Foundation
 
 /// ByeDPI optimal strategy define config
-public final class SBDTestConfig: Codable, Cloneable {
+public final class SBDTestConfig: Codable, Sendable, Cloneable {
     
     /// Domain DPI-evasion strategy tests count. Bigger - more accurate results, but requires more time
     public let domainRequestsCount: UInt8
@@ -138,7 +138,3 @@ public final class SBDTestConfig: Codable, Cloneable {
         return SBDStrategy(cmdArgs: out)
     }
 }
-
-#if swift(>=5.5)
-extension SBDTestConfig: Sendable {}
-#endif
