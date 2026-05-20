@@ -12,6 +12,7 @@ jobs:
 
       - name: Build Application
         run: |
+          # CONFIGURATION_BUILD_DIR yerine -derivedDataPath kullanıyoruz
           xcodebuild clean build \
             -project "SwByeDPI.xcodeproj" \
             -scheme "ByeDPI" \
@@ -21,10 +22,15 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             -skipPackagePluginValidation \
             -skipMacroValidation \
-            CONFIGURATION_BUILD_DIR="$(pwd)/build"
+            -derivedDataPath ./DerivedData
 
+          # Payload klasörünü oluştur
           mkdir -p Payload
-          mv build/*.app Payload/
+          
+          # Xcode'un oluşturduğu alt klasörlerdeki .app dosyasını bul ve Payload'a kopyala
+          find ./DerivedData/Build/Products -type d -name "ByeDPI.app" -exec cp -R {} Payload/ \;
+          
+          # IPA olarak paketle
           zip -r SwByeDPI.ipa Payload
 
       - name: Upload Artifact
