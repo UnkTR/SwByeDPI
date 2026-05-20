@@ -1,0 +1,31 @@
+name: Build iOS IPA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Build Application
+        run: |
+          xcodebuild clean build \
+            -scheme "SwByeDPI" \
+            -destination "generic/platform=iOS" \
+            -configuration Release \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            CONFIGURATION_BUILD_DIR="$(pwd)/build"
+
+          mkdir -p Payload
+          mv build/*.app Payload/
+          zip -r SwByeDPI.ipa Payload
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SwByeDPI-IPA
+          path: SwByeDPI.ipa
