@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-15 # Xcode 16 kullanması için güncellendi
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -13,7 +13,8 @@ jobs:
       - name: Build Application
         run: |
           xcodebuild clean build \
-            -scheme "SwByeDPI" \
+            -project "SwByeDPI.xcodeproj" \
+            -scheme "ByeDPI" \
             -destination "generic/platform=iOS" \
             -configuration Release \
             CODE_SIGNING_REQUIRED=NO \
