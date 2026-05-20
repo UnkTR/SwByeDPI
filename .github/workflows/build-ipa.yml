@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-15 # Xcode 16 kullanması için güncellendi
+    runs-on: macos-15
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -19,6 +19,8 @@ jobs:
             -configuration Release \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
+            -skipPackagePluginValidation \
+            -skipMacroValidation \
             CONFIGURATION_BUILD_DIR="$(pwd)/build"
 
           mkdir -p Payload
